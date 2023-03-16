@@ -7,6 +7,7 @@ import { LoginComponent } from './componentes/login/login.component';
 import { RegistrarseComponent } from './componentes/registrarse/registrarse.component';
 import { RecuperarcontrasenaComponent } from './componentes/recuperarcontrasena/recuperarcontrasena.component';
 import { RecuperartokenComponent } from './componentes/recuperartoken/recuperartoken.component';
+import { NavComponent } from './componentes/nav/nav.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { RecuperartokenComponent } from './componentes/recuperartoken/recuperart
     LoginComponent,
     RegistrarseComponent,
     RecuperarcontrasenaComponent,
-    RecuperartokenComponent
+    RecuperartokenComponent,
+    NavComponent
   ],
   imports: [
     BrowserModule,
