@@ -9,6 +9,7 @@ import { RecuperarcontrasenaComponent } from './componentes/recuperarcontrasena/
 import { RecuperartokenComponent } from './componentes/recuperartoken/recuperartoken.component';
 import { NavComponent } from './componentes/nav/nav.component';
 import { IndexComponent } from './componentes/index/index.component';
+import { NotFoundComponent } from './componentes/not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { IndexComponent } from './componentes/index/index.component';
     RecuperarcontrasenaComponent,
     RecuperartokenComponent,
     NavComponent,
-    IndexComponent
+    IndexComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
