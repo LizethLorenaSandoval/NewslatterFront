@@ -8,6 +8,7 @@ import { RegistrarseComponent } from './componentes/registrarse/registrarse.comp
 import { RecuperarcontrasenaComponent } from './componentes/recuperarcontrasena/recuperarcontrasena.component';
 import { RecuperartokenComponent } from './componentes/recuperartoken/recuperartoken.component';
 import { NavComponent } from './componentes/nav/nav.component';
+import { IndexComponent } from './componentes/index/index.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { NavComponent } from './componentes/nav/nav.component';
     RegistrarseComponent,
     RecuperarcontrasenaComponent,
     RecuperartokenComponent,
-    NavComponent
+    NavComponent,
+    IndexComponent
   ],
   imports: [
     BrowserModule,
