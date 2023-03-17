@@ -7,8 +7,8 @@ import { RegistrarseComponent } from './componentes/registrarse/registrarse.comp
 import { RecuperarcontrasenaComponent } from './componentes/recuperarcontrasena/recuperarcontrasena.component';
 import { RecuperartokenComponent } from './componentes/recuperartoken/recuperartoken.component';
 import { NavComponent } from './componentes/nav/nav.component';
-import { IndexComponent } from './componentes/index/index.component';
 import { NotFoundComponent } from './componentes/not-found/not-found.component';
+import { HomeComponent } from './componentes/home/home.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'login', pathMatch: 'full'},
@@ -18,7 +18,7 @@ const routes: Routes = [
   {path: 'recuperarcontrasena', component: RecuperarcontrasenaComponent},
   {path: 'recuperartoken', component: RecuperartokenComponent},
   {path: 'nav', component: NavComponent},
-  {path: 'home', component: IndexComponent},
+  {path: 'home', component: HomeComponent},
   {path: 'not-found', component: NotFoundComponent},
   {path: '**', redirectTo: 'not-found'}
 ];
