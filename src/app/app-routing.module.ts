@@ -9,6 +9,7 @@ import { RecuperartokenComponent } from './componentes/recuperartoken/recuperart
 import { NavComponent } from './componentes/nav/nav.component';
 import { NotFoundComponent } from './componentes/not-found/not-found.component';
 import { HomeComponent } from './componentes/home/home.component';
+import { PerfilComponent } from './componentes/perfil/perfil.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'login', pathMatch: 'full'},
@@ -20,7 +21,9 @@ const routes: Routes = [
   {path: 'nav', component: NavComponent},
   {path: 'home', component: HomeComponent},
   {path: 'not-found', component: NotFoundComponent},
-  {path: '**', redirectTo: 'not-found'}
+  {path: 'perfil', component: PerfilComponent},
+  {path: '**', redirectTo: 'not-found'},
+  
 ];
 
 @NgModule({

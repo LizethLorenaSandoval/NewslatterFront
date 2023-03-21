@@ -10,6 +10,8 @@ import { RecuperartokenComponent } from './componentes/recuperartoken/recuperart
 import { NavComponent } from './componentes/nav/nav.component';
 import { NotFoundComponent } from './componentes/not-found/not-found.component';
 import { HomeComponent } from './componentes/home/home.component';
+import { PerfilComponent } from './componentes/perfil/perfil.component';
+
 
 @NgModule({
   declarations: [
@@ -20,7 +22,8 @@ import { HomeComponent } from './componentes/home/home.component';
     RecuperartokenComponent,
     NavComponent,
     NotFoundComponent,
-    HomeComponent
+    HomeComponent,
+    PerfilComponent
   ],
   imports: [
     BrowserModule,

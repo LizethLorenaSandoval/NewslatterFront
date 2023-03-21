@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi perfil</title>
+</head>
+<body>
+    <app-nav></app-nav>
+    
+    <div class="d-flex align-items-center justify-content-center border">
+
+        
+
+            <div class="m-4 col-md-10 col-lg-6 col-xl-6 border p-3">
+
+                <div class="col-12 text-center mb-5">
+                    <h2>Mi perfil</h2>
+                </div>
+
+              <form action class="example-form">
+                
+                <div class="row ">
+                    <div class="mb-3 form-group col-6">
+                        <label for="email" class="col-form-label">Nombre</label>
+                        
+                        <input 
+                        value="Pepito"
+                        type="text"
+                        class="form-control"
+                        id="exampleFormControlInput1"
+                        placeholder="Pepito"/>
+                    </div>
+    
+    
+                    <div class="mb-3 form-group col-6">
+                        <label for="email" class="col-form-label ">Apellido</label>
+                        
+                        <input 
+                        value="Perez"
+                        type="text"
+                        class="form-control"
+                        id="exampleFormControlInput1"
+                        placeholder="Perez"/>
+                    </div>
+                    
+
+                    <div class="mb-3 form-group col-12">
+                        <label for="email" class="col-form-label ">Celula</label>
+                        <select class="form-select" aria-label="Default select example">
+                        <option selected>Pensiones voluntarias</option>
+                        <option value="1">Tesoreria</option>
+                        <option value="2">AML</option>
+                        <option value="3">Regulatorios</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3 form-group col-12">
+                        <label for="email" class="col-form-label ">Tipo de documento</label>
+                        <select class="form-select" aria-label="Default select example">
+                        <option selected>CC</option>
+                        <option value="1">TI</option>
+                        <option value="2">RC</option>
+                        <option value="3">CE</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3 form-group col-6">
+                        <label for="email" class="col-form-label ">Número de cedula</label>
+                        
+                        <input disabled
+                        value="1234567"
+                        type="number"
+                        class="form-control"
+                        id="exampleFormControlInput1"/>
+                    </div>
+
+                    
+                    <div class="mb-3 form-group col-6">
+                        <label for="email" class="col-form-label ">Email</label>
+                        
+                        <input disabled
+                        value="pepito@perez.com"
+                        type="email"
+                        class="form-control"
+                        id="exampleFormControlInput1"
+                        placeholder="Pepito@Perez.com"/>
+                    </div>
+                </div>
+      
+                <!-- Submit button -->
+                <div class="d-flex justify-content-around align-items-center mb-3 row p-2 d-grid gap-3">
+                <button type="submit" class="btn btn-info">Editar</button>
+                <button type="submit" class="btn btn-secondary">Cambiar contraseña</button>
+                </div>
+
+              </form>
+            </div>
+    </div>
+
+</body>
+</html>
+
