@@ -85,14 +85,65 @@
                 </div>
       
                 <!-- Submit button -->
-                <div class="d-flex justify-content-around align-items-center mb-3 row p-2 d-grid gap-3">
+                <div class="d-flex justify-content-around align-items-center row p-2 d-grid gap-3">
                 <button type="submit" class="btn btn-info">Editar</button>
-                <button type="submit" class="btn btn-secondary">Cambiar contraseña</button>
+                
                 </div>
 
               </form>
+              <div class="d-flex justify-content-around align-items-center row p-2 d-grid gap-3">
+                <button (click)="open(content)"type="submit" class="btn btn-secondary">Cambiar contraseña</button>
+              </div>
             </div>
     </div>
+
+        <!-- MODALES -->
+
+<!-- Modal de cambiar contraseña -->
+
+<ng-template #content let-c="close" let-d="dismiss">
+	<div class="modal-header">
+		<h4 class="modal-title" id="modal-basic-title">Cambiar contraseña</h4>
+		<button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
+	</div>
+	<div class="modal-body">
+		<form action class="example-form">
+            
+            <div class="row">
+                <div class="mb-3 form-group col-12">
+                    <label for="email" class="col-form-label">Ingresa tu actual contraseña</label>
+                    
+                    <input 
+                    type="password"
+                    class="form-control"
+                    id="exampleFormControlInput1"/>
+                </div>
+
+                <div class="mb-3 form-group col-12">
+                    <label for="email" class="col-form-label">Ingresa tu nueva contraseña</label>
+                    
+                    <input 
+                    type="password"
+                    class="form-control"
+                    id="exampleFormControlInput1"/>
+                </div>
+
+                <div class="mb-3 form-group col-12">
+                    <label for="email" class="col-form-label">Confirma la nueva contraseña</label>
+                    
+                    <input 
+                    type="password"
+                    class="form-control"
+                    id="exampleFormControlInput1"/>
+                </div>
+            </div>  
+
+          </form>
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-outline-dark" (click)="c('Save click')">Cambiar contraseña</button>
+	</div>
+</ng-template>
 
 </body>
 </html>
