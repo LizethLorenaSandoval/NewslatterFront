@@ -172,14 +172,51 @@
 
 <ng-template #content let-c="close" let-d="dismiss">
 	<div class="modal-header">
-		<h4 class="modal-title" id="modal-basic-title">Hi there!</h4>
+		<h4 class="modal-title" id="modal-basic-title">Crear letter</h4>
 		<button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
 	</div>
 	<div class="modal-body">
-		<p>Hello, World!</p>
+		<form action class="example-form">
+            
+            <div class="row">
+                <div class="mb-3 form-group col-12">
+                    <label for="email" class="col-form-label">Titulo</label>
+                    
+                    <input 
+                    type="text"
+                    class="form-control"
+                    id="exampleFormControlInput1"/>
+                </div>
+
+                <div class="mb-3 form-group col-6">
+                    <select class="form-select" aria-label="Default select example">
+                    <option selected>Selecciona una celula</option>
+                    <option value="1">Pensiones voluntarias</option>
+                    <option value="2">Tesoreria</option>
+                    <option value="3">AML</option>
+                    </select>
+                </div>
+
+                <div class="mb-3 form-group col-6">
+                    <select class="form-select" aria-label="Default select example">
+                    <option selected>Asigna una prioridad a tu nota</option>
+                    <option value="1">Normal</option>
+                    <option value="2">Importante</option>
+                    <option value="3">Muy importante</option>
+                    </select>
+                </div>
+
+                <div class="mb-3 form-group col-12">
+                    <label for="exampleFormControlTextarea1" class="form-label">Descripción</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="5"></textarea>
+                </div>
+
+            </div>  
+            
+          </form>
 	</div>
 	<div class="modal-footer">
-		<button type="button" class="btn btn-outline-dark" (click)="c('Save click')">Save</button>
+		<button type="button" class="btn btn-outline-dark" (click)="c('Save click')">Crear letter</button>
 	</div>
 </ng-template>
 </body>

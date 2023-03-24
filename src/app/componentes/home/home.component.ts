@@ -17,8 +17,8 @@ export class HomeComponent {
 		config.keyboard = false;
 	}
 
-	open(content: any) {
-		this.modalService.open(content);
+	open(content: any) { //el size es opcional, para el tamaño de la modal
+		this.modalService.open(content, { size: 'lg' });
 	}
 
 }
