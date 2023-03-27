@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
-import { NotasService } from 'src/app/servicios/notas.service';
+import { NotasService } from 'src/app/servicios/notas/notas.service';
+import { CelulasService } from 'src/app/servicios/celulas/celulas.service';
 
 @Component({
   selector: 'app-home',
@@ -12,6 +13,7 @@ export class HomeComponent {
 
 	// Variables
 	notas: any = {};
+	celulas: any = {};
 	rows: any = [];
 	_filterRows: any;
 
@@ -24,7 +26,8 @@ export class HomeComponent {
   constructor(
 	config: NgbModalConfig, 
 	private modalService: NgbModal,
-	private notasService: NotasService
+	private notasService: NotasService,
+	private celulasService: CelulasService
 	) {
 		// customize default values of modals used by this component tree
 		config.backdrop = 'static';
@@ -37,10 +40,18 @@ export class HomeComponent {
 
 	// Servicios 
 	getNotas(){
-		this.notasService.getData().subscribe((res) =>{
+		this.notasService.getNotas().subscribe((res) =>{
 				this.notas = res;
 				this._filterRows = this.notas;
 				console.log(this.notas);
+		})
+	}
+
+	getCelulas(){
+		this.celulasService.getCelulas().subscribe((res) =>{
+				this.celulas = res;
+				this.rows = this.celulas;
+				console.log(this.celulas);
 		})
 	}
 

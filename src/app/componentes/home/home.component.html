@@ -85,19 +85,9 @@
     
             <div class="ms-5 mt-3 mb-5 shadow col-xl-3 d-none d-sm-block f border border-top-0">
                 <h4 class="text-center m-1">Celulas</h4>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Pensiones voluntarias</li>
-                    <li class="list-group-item">Regulatorios</li>
-                    <li class="list-group-item">AML</li>
-                    <li class="list-group-item">Pensiones voluntarias</li>
-                    <li class="list-group-item">Regulatorios</li>
-                    <li class="list-group-item">AML</li>
-                    <li class="list-group-item">Pensiones voluntarias</li>
-                    <li class="list-group-item">Regulatorios</li>
-                    <li class="list-group-item">AML</li>
-                    <li class="list-group-item">Pensiones voluntarias</li>
-                    <li class="list-group-item">Regulatorios</li>
-                    <li class="list-group-item">AML</li>
+                <ul class="list-group list-group-flush" >
+                    <li *ngFor="let celulas of _filterRows" class="list-group-item">{{celulas.nombre_celula | titlecase}}</li>
+                    
                 </ul>
             </div>   
         </div>
@@ -128,10 +118,8 @@
 
                 <div class="mb-3 form-group col-6">
                     <select class="form-select" aria-label="Default select example">
-                    <option selected>Selecciona una celula</option>
-                    <option value="1">Pensiones voluntarias</option>
-                    <option value="2">Tesoreria</option>
-                    <option value="3">AML</option>
+                    <option *ngFor="let celulas of _filterRows" value="{{celulas.id_celula}}">{{celulas.nombre_celula | titlecase}}</option>
+                  
                     </select>
                 </div>
 
