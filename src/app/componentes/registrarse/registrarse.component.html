@@ -50,10 +50,7 @@
 
                     <div class="mb-3 form-group col-12">
                         <select class="form-select" aria-label="Default select example">
-                        <option selected>Selecciona una celula</option>
-                        <option value="1">Pensiones voluntarias</option>
-                        <option value="2">Tesoreria</option>
-                        <option value="3">AML</option>
+                            <option *ngFor="let celulas of celulas" value="{{celulas.id_celula}}">{{celulas.nombre_celula | titlecase}}</option>
                         </select>
                     </div>
 
