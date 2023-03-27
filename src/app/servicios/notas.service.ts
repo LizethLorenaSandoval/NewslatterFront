@@ -9,5 +9,11 @@ export class NotasService {
 
   API_URL = environment.API_URL;
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
+
+  // Aquí se llaman las apis del back
+
+  getData(){
+    return this.http.get(`${this.API_URL}/nota`)
+  }
 }

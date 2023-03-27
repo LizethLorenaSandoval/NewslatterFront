@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
+import { NotasService } from 'src/app/servicios/notas.service';
 
 @Component({
   selector: 'app-home',
@@ -9,9 +10,22 @@ import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 })
 export class HomeComponent {
 
+	// Variables
+	notas: any = {};
+	rows: any = [];
+	_filterRows: any;
 
-// logica para el modal
-  constructor(config: NgbModalConfig, private modalService: NgbModal) {
+	ngOnInit(){
+		this.getNotas();
+	}
+
+
+// logica para el modal y llamado del servicio
+  constructor(
+	config: NgbModalConfig, 
+	private modalService: NgbModal,
+	private notasService: NotasService
+	) {
 		// customize default values of modals used by this component tree
 		config.backdrop = 'static';
 		config.keyboard = false;
@@ -19,6 +33,17 @@ export class HomeComponent {
 
 	open(content: any) { //el size es opcional, para el tamaño de la modal
 		this.modalService.open(content, { size: 'lg' });
+	}
+
+	// Servicios 
+	getNotas(){
+		this.notasService.getData().subscribe((res: any) =>{
+			res.forEach((item: any) =>{
+				console.log(item);
+			});
+			this.rows = res;
+			this._filterRows = res;
+		})
 	}
 
 }
