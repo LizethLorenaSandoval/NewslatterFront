@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 import { NotasService } from 'src/app/servicios/notas/notas.service';
 import { CelulasService } from 'src/app/servicios/celulas/celulas.service';
+import { EstadoNotaService } from 'src/app/servicios/estado_nota/estado-nota.service';
 
 @Component({
   selector: 'app-home',
@@ -14,10 +15,12 @@ export class HomeComponent {
 	// Variables
 	notas: any = {};
 	celulas: any = {};
+	estadoNota: any = {};
 	rows: any = [];
 
 
 	ngOnInit(){
+		this.getEstadoNota();
 		this.getCelulas();
 		this.getNotas();
 	}
@@ -28,7 +31,8 @@ export class HomeComponent {
 	config: NgbModalConfig, 
 	private modalService: NgbModal,
 	private notasService: NotasService,
-	private celulasService: CelulasService
+	private celulasService: CelulasService,
+	private EstadoNotaService: EstadoNotaService
 	) {
 		// customize default values of modals used by this component tree
 		config.backdrop = 'static';
@@ -39,20 +43,27 @@ export class HomeComponent {
 		this.modalService.open(content, { size: 'lg' });
 	}
 
-	// Servicios 
+	// Servicios de notas
 	getNotas(){
 		this.notasService.getNotas().subscribe((res) =>{
 				this.notas = res;
-				this.notas = this.notas;
 				console.log(this.notas);
 		})
 	}
 
+	// Servicios de celulas
 	getCelulas(){
 		this.celulasService.getCelulas().subscribe((res) =>{
 				this.celulas = res;
-				this.rows = this.celulas;
-				console.log(this.rows);
+				console.log(this.celulas);
+		})
+	}
+
+	// Servicios de estado notas
+	getEstadoNota(){
+		this.EstadoNotaService.getEstadoNota().subscribe((res) =>{
+				this.estadoNota = res;
+				console.log(this.estadoNota);
 		})
 	}
 

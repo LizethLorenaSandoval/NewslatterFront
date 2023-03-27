@@ -86,7 +86,7 @@
             <div class="ms-5 mt-3 mb-5 shadow col-xl-3 d-none d-sm-block f border border-top-0">
                 <h4 class="text-center m-1">Celulas</h4>
                 <ul class="list-group list-group-flush" >
-                    <li *ngFor="let celulas of rows" class="list-group-item">{{celulas.nombre_celula | titlecase}}</li>
+                    <li *ngFor="let celulas of celulas" class="list-group-item">{{celulas.nombre_celula | titlecase}}</li>
                     
                 </ul>
             </div>   
@@ -118,17 +118,14 @@
 
                 <div class="mb-3 form-group col-6">
                     <select class="form-select" aria-label="Default select example">
-                    <option *ngFor="let celulas of rows" value="{{celulas.id_celula}}">{{celulas.nombre_celula | titlecase}}</option>
+                    <option *ngFor="let celulas of celulas" value="{{celulas.id_celula}}">{{celulas.nombre_celula | titlecase}}</option>
                   
                     </select>
                 </div>
 
                 <div class="mb-3 form-group col-6">
                     <select class="form-select" aria-label="Default select example">
-                    <option selected>Asigna una prioridad a tu nota</option>
-                    <option value="1">Normal</option>
-                    <option value="2">Importante</option>
-                    <option value="3">Muy importante</option>
+                    <option *ngFor="let estadoNota of estadoNota" value="{{estadoNota.id_estado_nota}}">{{estadoNota.nombre_estado_nota | titlecase}}</option>   
                     </select>
                 </div>
 
