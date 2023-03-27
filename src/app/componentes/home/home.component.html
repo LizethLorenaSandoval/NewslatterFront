@@ -43,7 +43,7 @@
         <div class="d-flex">
         
             <div class="m-3  col-xl-8 col-sm-8 ">
-               <div class="shadow mb-5 f border border-top-0" *ngFor="let notas of _filterRows">
+               <div class="shadow mb-5 f border border-top-0" *ngFor="let notas of notas">
                 <div class="row m-1">
                     <div class="row col-12">
                         <div class="form-group d-flex justify-content-end">
@@ -86,7 +86,7 @@
             <div class="ms-5 mt-3 mb-5 shadow col-xl-3 d-none d-sm-block f border border-top-0">
                 <h4 class="text-center m-1">Celulas</h4>
                 <ul class="list-group list-group-flush" >
-                    <li *ngFor="let celulas of _filterRows" class="list-group-item">{{celulas.nombre_celula | titlecase}}</li>
+                    <li *ngFor="let celulas of rows" class="list-group-item">{{celulas.nombre_celula | titlecase}}</li>
                     
                 </ul>
             </div>   
@@ -118,7 +118,7 @@
 
                 <div class="mb-3 form-group col-6">
                     <select class="form-select" aria-label="Default select example">
-                    <option *ngFor="let celulas of _filterRows" value="{{celulas.id_celula}}">{{celulas.nombre_celula | titlecase}}</option>
+                    <option *ngFor="let celulas of rows" value="{{celulas.id_celula}}">{{celulas.nombre_celula | titlecase}}</option>
                   
                     </select>
                 </div>

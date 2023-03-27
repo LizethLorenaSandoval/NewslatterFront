@@ -15,9 +15,10 @@ export class HomeComponent {
 	notas: any = {};
 	celulas: any = {};
 	rows: any = [];
-	_filterRows: any;
+
 
 	ngOnInit(){
+		this.getCelulas();
 		this.getNotas();
 	}
 
@@ -42,7 +43,7 @@ export class HomeComponent {
 	getNotas(){
 		this.notasService.getNotas().subscribe((res) =>{
 				this.notas = res;
-				this._filterRows = this.notas;
+				this.notas = this.notas;
 				console.log(this.notas);
 		})
 	}
@@ -51,7 +52,7 @@ export class HomeComponent {
 		this.celulasService.getCelulas().subscribe((res) =>{
 				this.celulas = res;
 				this.rows = this.celulas;
-				console.log(this.celulas);
+				console.log(this.rows);
 		})
 	}
 
