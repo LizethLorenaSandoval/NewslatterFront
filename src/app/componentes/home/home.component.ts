@@ -37,12 +37,10 @@ export class HomeComponent {
 
 	// Servicios 
 	getNotas(){
-		this.notasService.getData().subscribe((res: any) =>{
-			res.forEach((item: any) =>{
-				console.log(item);
-			});
-			this.rows = res;
-			this._filterRows = res;
+		this.notasService.getData().subscribe((res) =>{
+				this.notas = res;
+				this._filterRows = this.notas;
+				console.log(this.notas);
 		})
 	}
 
