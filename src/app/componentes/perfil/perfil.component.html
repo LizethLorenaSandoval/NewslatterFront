@@ -55,10 +55,7 @@
                     <div class="mb-3 form-group col-12">
                         <label for="email" class="col-form-label ">Celula</label>
                         <select class="form-select" aria-label="Default select example">
-                        <option selected>Pensiones voluntarias</option>
-                        <option value="1">Tesoreria</option>
-                        <option value="2">AML</option>
-                        <option value="3">Regulatorios</option>
+                            <option *ngFor="let celulas of celulas" value="{{celulas.id_celula}}">{{celulas.nombre_celula | titlecase}}</option>
                         </select>
                     </div>
 
