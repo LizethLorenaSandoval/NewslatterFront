@@ -56,10 +56,7 @@
 
                     <div class="mb-3 form-group col-12">
                         <select class="form-select" aria-label="Default select example">
-                        <option selected>Selecciona una tipo de documento</option>
-                        <option value="1">TI</option>
-                        <option value="2">CC</option>
-                        <option value="3">CE</option>
+                            <option *ngFor="let tipo_documento of tipo_documento" value="{{tipo_documento.id_tipo_documento}}">{{tipo_documento.nombre_tipo_documento}}</option>
                         </select>
                     </div>
 
