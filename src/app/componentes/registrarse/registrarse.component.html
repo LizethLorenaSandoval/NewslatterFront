@@ -34,6 +34,8 @@
                         class="form-control"
                         id="exampleFormControlInput1"
                         placeholder="Pepito"/>
+                        <!-- <span class="text-danger" *ngIf="validField('nombre')"
+                        >Este campo es requerido</span> -->
                     </div>
     
     
@@ -49,12 +51,14 @@
                     
 
                     <div class="mb-3 form-group col-12">
+                        <label for="email" class="col-form-label ">Celula</label>
                         <select class="form-select" aria-label="Default select example">
                             <option *ngFor="let celulas of celulas" value="{{celulas.id_celula}}">{{celulas.nombre_celula | titlecase}}</option>
                         </select>
                     </div>
 
                     <div class="mb-3 form-group col-12">
+                        <label for="email" class="col-form-label ">Tipo de documento</label>
                         <select class="form-select" aria-label="Default select example">
                             <option *ngFor="let tipo_documento of tipo_documento" value="{{tipo_documento.id_tipo_documento}}">{{tipo_documento.nombre_tipo_documento}}</option>
                         </select>
@@ -104,7 +108,8 @@
 
                 <!-- Submit button -->
                 <div class="d-flex justify-content-around align-items-center mb-3 row p-2">
-                <button type="submit" class="btn btn-info">Registrarme</button>
+                <button type="submit" class="btn btn-info" 
+                >Registrarme</button>
 
                 </div>
 
