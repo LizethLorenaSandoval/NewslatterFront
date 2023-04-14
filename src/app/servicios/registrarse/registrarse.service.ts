@@ -13,13 +13,8 @@ export class RegistrarseService {
 
   // Aquí se llaman las apis del back
 
-  registrarUsuario(){
-    return this.http.get(`${this.API_URL}/registrarse`)
+  registrarUsuario(user: any){
+    return this.http.post(`${this.API_URL}/registrarse`, user)
   }
 
-
-  // Validación si el correo existe en base de datos
-  // validateUserExists(correo) {
-  //   return this.http.get(`${this.API_URL}/register/${correo}`);
-  // }
 }

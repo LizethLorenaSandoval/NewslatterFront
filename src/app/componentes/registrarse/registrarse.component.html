@@ -32,10 +32,11 @@
                         <input 
                         type="text"
                         class="form-control"
-                        id="exampleFormControlInput1"
+                        id="nombre"
                         placeholder="Pepito"/>
-                        <!-- <span class="text-danger" *ngIf="validField('nombre')"
-                        >Este campo es requerido</span> -->
+                        <span class="text-danger" *ngIf="validField('nombre')"
+                        >Este campo es requerido</span
+                >
                     </div>
     
     
@@ -45,32 +46,34 @@
                         <input 
                         type="text"
                         class="form-control"
-                        id="exampleFormControlInput1"
+                        id="apellido"
                         placeholder="Perez"/>
+                        <span class="text-danger" *ngIf="validField('apellido')"
+                        >Este campo es requerido</span>
                     </div>
                     
 
                     <div class="mb-3 form-group col-12">
-                        <label for="email" class="col-form-label ">Celula</label>
-                        <select class="form-select" aria-label="Default select example">
+                        <label for="email" class="col-form-label " id="id_celula">Celula</label>
+                        <select class="form-select" aria-label="Default select example" >
                             <option *ngFor="let celulas of celulas" value="{{celulas.id_celula}}">{{celulas.nombre_celula | titlecase}}</option>
                         </select>
                     </div>
 
                     <div class="mb-3 form-group col-12">
-                        <label for="email" class="col-form-label ">Tipo de documento</label>
-                        <select class="form-select" aria-label="Default select example">
-                            <option *ngFor="let tipo_documento of tipo_documento" value="{{tipo_documento.id_tipo_documento}}">{{tipo_documento.nombre_tipo_documento}}</option>
+                        <label for="email" class="col-form-label " id="id_tipo_documento">Tipo de documento</label>
+                        <select class="form-select" aria-label="Default select example" >
+                            <option  *ngFor="let tipo_documento of tipo_documento" value="{{tipo_documento.id_tipo_documento}}">{{tipo_documento.nombre_tipo_documento}}</option>
                         </select>
                     </div>
 
                     <div class="mb-3 form-group col-6">
-                        <label for="email" class="col-form-label ">Número de cedula</label>
+                        <label for="email" class="col-form-label ">Número de documento</label>
                         
                         <input 
                         type="number"
                         class="form-control"
-                        id="exampleFormControlInput1"/>
+                        id="documento"/>
                     </div>
 
                     
@@ -80,7 +83,7 @@
                         <input 
                         type="email"
                         class="form-control"
-                        id="exampleFormControlInput1"
+                        id="correo"
                         placeholder="Pepito@Perez.com"/>
                     </div>
 
@@ -91,7 +94,7 @@
                         <input 
                         type="password"
                         class="form-control"
-                        id="exampleFormControlInput1"/>
+                        id="contrasena"/>
                     </div>
 
 
@@ -101,14 +104,20 @@
                         <input 
                         type="password"
                         class="form-control"
-                        id="exampleFormControlInput1"/>
+                        id="confirmPassword"/>
+                        <span class="text-danger" *ngIf="validField('confirmPassword')"
+                        >Este campo es requerido <br
+                        /></span>
+                        <span class="text-danger" *ngIf="validPassword()"
+                        >Las Contraseñas no son iguales</span
+                >
                     </div>
                 </div>
       
 
                 <!-- Submit button -->
                 <div class="d-flex justify-content-around align-items-center mb-3 row p-2">
-                <button type="submit" class="btn btn-info" 
+                <button  class="btn btn-info" (click)="crearUsuario()"
                 >Registrarme</button>
 
                 </div>
