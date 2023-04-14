@@ -21,7 +21,7 @@ export class RegistrarseComponent {
   tipo_documento: any = {};
   user: any = {};
 
-  ngOnInit(){
+  ngOnInit():void{
     this.crearUsuario();
     this.getTipoDoc();
 		this.getCelulas();
@@ -51,11 +51,11 @@ export class RegistrarseComponent {
     ],
     id_celula:[
       '',
-      [Validators.required, Validators.minLength(1), Validators.maxLength(2)]
+      [Validators.required, Validators.minLength(1), Validators.maxLength(10)]
     ],
     id_tipo_documento:[
       '',
-      [Validators.required, Validators.minLength(1), Validators.maxLength(2)]
+      [Validators.required, Validators.minLength(1), Validators.maxLength(10)]
     ],
     correo: [
       '',
@@ -104,6 +104,7 @@ export class RegistrarseComponent {
   //Función para crear el usuario
 
   crearUsuario(){
+    let exists: boolean;
     console.log("Me has dado click tio");
         try{
           this.user.nombre = this.registerForm.controls['nombre'].value;
@@ -112,13 +113,15 @@ export class RegistrarseComponent {
           this.user.id_tipo_documento = this.registerForm.controls['id_tipo_documento'].value;
           this.user.documento = this.registerForm.controls['documento'].value;      
           this.user.correo = this.registerForm.controls['correo'].value;
-          this.user.contrasena = this.registerForm.controls['contrasena'].value;
+          this.user.contrasena = this.registerForm.controls['contrasena'].value
+          console.log(this.user);
+          
 
           this.RegistrarseService.registrarUsuario(this.user).subscribe(
             (res:any)=>{
               
-                if (res.length === 0){
-                  console.log(res);
+                if (res.exists === false){
+                  console.log(this.user.correo, "HOLAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
                   Swal.fire({
                   position: 'center',
                   icon: 'success',
@@ -137,7 +140,7 @@ export class RegistrarseComponent {
                   })
                 }
               } 
-          )
+          ) 
         }catch (error){
           console.log(error);
           
