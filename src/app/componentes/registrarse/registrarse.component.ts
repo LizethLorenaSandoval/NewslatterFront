@@ -15,14 +15,12 @@ import { RegistrarseService } from 'src/app/servicios/registrarse/registrarse.se
   encapsulation: ViewEncapsulation.None
 })
 export class RegistrarseComponent {
-
   // Variables
-	celulas: any = {};
-  tipo_documento: any = {};
+	celulas: any = [];
+  tipo_documento: any = [];
   user: any = {};
 
   ngOnInit():void{
-    this.crearUsuario();
     this.getTipoDoc();
 		this.getCelulas();
 	}
@@ -34,6 +32,7 @@ export class RegistrarseComponent {
     private router: Router,
     private fb: UntypedFormBuilder // esto se importa
     ) {}
+
 
   //Validación de formulario
   public registerForm: UntypedFormGroup = this.fb.group({ //los validators tambien se importan
@@ -104,8 +103,7 @@ export class RegistrarseComponent {
   //Función para crear el usuario
 
   crearUsuario(){
-    let exists: boolean;
-    console.log("Me has dado click tio");
+
         try{
           this.user.nombre = this.registerForm.controls['nombre'].value;
           this.user.apellido = this.registerForm.controls['apellido'].value;  
@@ -113,13 +111,11 @@ export class RegistrarseComponent {
           this.user.id_tipo_documento = this.registerForm.controls['id_tipo_documento'].value;
           this.user.documento = this.registerForm.controls['documento'].value;      
           this.user.correo = this.registerForm.controls['correo'].value;
-          this.user.contrasena = this.registerForm.controls['contrasena'].value
-          console.log(this.user);
-          
+          this.user.contrasena = this.registerForm.controls['contrasena'].value          
 
           this.RegistrarseService.registrarUsuario(this.user).subscribe(
             (res:any)=>{
-              
+
                 if (res.exists === false){
                   console.log(this.user.correo, "HOLAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
                   Swal.fire({
@@ -127,7 +123,7 @@ export class RegistrarseComponent {
                   icon: 'success',
                   title: 'Te has registrado correctamente',
                   showConfirmButton: true,
-                  confirmButtonText: "Ok",
+                  confirmButtonText: "Listo",
                   timer: 1500
                 }); this.router.navigate(['/home']);
                 }else {
@@ -136,7 +132,7 @@ export class RegistrarseComponent {
                     icon: 'error',
                     title: 'Opps, el número de cedula ya se encuentra registrado',
                     showConfirmButton: true,
-                    confirmButtonText: "Ok"
+                    confirmButtonText: "Vale"
                   })
                 }
               } 
@@ -145,20 +141,6 @@ export class RegistrarseComponent {
           console.log(error);
           
         }
-          // this.user = {
-          //   nombre : this.registerForm.value.nombre,
-          //   apellido : this.registerForm.value.apellido,
-          //   id_celula : this.registerForm.value.id_celula,
-          //   id_tipo_documento : this.registerForm.value.id_tipo_documento,
-          //   documento : this.registerForm.value.documento,
-          //   correo : this.registerForm.value.correo,
-          //   contrasena : this.registerForm.value.contrasena
-          // }
-          
-          // console.log(this.user)
-          
-
-    
   }
 
   // Servicios de celulas
