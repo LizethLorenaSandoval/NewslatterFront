@@ -62,18 +62,18 @@
                         <select class="form-select" aria-label="Default select example" >
                             <option *ngFor="let celulas of celulas" value="{{celulas.id_celula}}">{{celulas.nombre_celula | titlecase}}</option>
                         </select>
+                        <span class="text-danger" *ngIf="validField('id_celula')"
+                        >Este campo es requerido</span>
                     </div>
-
-                    <!-- <input class="txt" type="hidden"  value="1"> -->
 
                     <div class="mb-3 form-group col-12" formControlName="id_tipo_documento" autofocus>
                         <label for="email" class="col-form-label " id="id_tipo_documento">Tipo de documento</label>
                         <select class="form-select" aria-label="Default select example" >
                             <option  *ngFor="let tipo_documento of tipo_documento" value="{{tipo_documento.id_tipo_documento}}">{{tipo_documento.nombre_tipo_documento}}</option>
                         </select>
+                        <span class="text-danger" *ngIf="validField('id_tipo_documento')"
+                        >Este campo es requerido</span>
                     </div>
-
-                    <!-- <input class="txt" type="hidden" value="1"> -->
 
                     <div class="mb-3 form-group col-6">
                         <label for="email" class="col-form-label ">Número de documento</label>
@@ -84,6 +84,8 @@
                         formControlName="documento"
                         autofocus
                         id="documento"/>
+                        <span class="text-danger" *ngIf="validField('documento')"
+                        >Este campo es requerido</span>
                     </div>
 
                     
@@ -97,6 +99,8 @@
                         autofocus
                         id="correo"
                         placeholder="Pepito@Perez.com"/>
+                        <span class="text-danger" *ngIf="validField('correo')"
+                        >Este campo es requerido</span>
                     </div>
 
 
@@ -109,10 +113,12 @@
                         formControlName="contrasena"
                         autofocus
                         id="contrasena"/>
+                        <span class="text-danger" *ngIf="validField('contrasena')"
+                        >Este campo es requerido</span>
                     </div>
 
 
-                    <div class="mb-2 form-group col-12">
+                    <!-- <div class="mb-2 form-group col-12">
                         <label for="email" class="col-form-label ">Confirmar contraseña</label>
                         
                         <input 
@@ -127,7 +133,7 @@
                         <span class="text-danger" *ngIf="validPassword()"
                         >Las Contraseñas no son iguales</span
                 >
-                    </div>
+                    </div> -->
                 </div>
       
 

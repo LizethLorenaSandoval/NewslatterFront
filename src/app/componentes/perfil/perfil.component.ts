@@ -11,8 +11,8 @@ import { TipoDocumentoService } from 'src/app/servicios/tipo_documento/tipo-docu
 export class PerfilComponent {
 
   // Variables
-	celulas: any = {};
-  tipo_documento: any = {};
+	celulas: any = [];
+  tipo_documento: any = [];
 
 
   ngOnInit(){

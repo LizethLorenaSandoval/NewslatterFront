@@ -10,6 +10,7 @@ import { NavComponent } from './componentes/nav/nav.component';
 import { NotFoundComponent } from './componentes/not-found/not-found.component';
 import { HomeComponent } from './componentes/home/home.component';
 import { PerfilComponent } from './componentes/perfil/perfil.component';
+import { NavAdminIndexComponent } from './componentes/nav-admin-index/nav-admin-index.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'login', pathMatch: 'full'},
@@ -22,6 +23,7 @@ const routes: Routes = [
   {path: 'home', component: HomeComponent},
   {path: 'not-found', component: NotFoundComponent},
   {path: 'perfil', component: PerfilComponent},
+  {path: 'nav-admin-index', component: NavAdminIndexComponent},
   {path: '**', redirectTo: 'not-found'},
   
 ];

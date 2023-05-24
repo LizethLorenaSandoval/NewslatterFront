@@ -13,9 +13,9 @@ import { EstadoNotaService } from 'src/app/servicios/estado_nota/estado-nota.ser
 export class HomeComponent {
 
 	// Variables
-	notas: any = {};
-	celulas: any = {};
-	estadoNota: any = {};
+	notas: any = [];
+	celulas: any = [];
+	estadoNota: any = [];
 	rows: any = [];
 
 

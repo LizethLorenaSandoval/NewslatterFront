@@ -18,7 +18,7 @@ export class RegistrarseComponent {
   // Variables
 	celulas: any = [];
   tipo_documento: any = [];
-  user: any = {};
+  user: any = [];
 
   ngOnInit():void{
     this.getTipoDoc();
@@ -91,9 +91,9 @@ export class RegistrarseComponent {
     };
   }
 
-  validPassword() {
-    return this.registerForm.controls['contrasena'].value !== this.registerForm.controls['confirmPassword'].value ;
-  }
+  // validPassword() {
+  //   return this.registerForm.controls['contrasena'].value !== this.registerForm.controls['confirmPassword'].value ;
+  // }
 
   validField(field: string) {
     return this.registerForm.controls[field].errors &&
@@ -103,21 +103,20 @@ export class RegistrarseComponent {
   //Función para crear el usuario
 
   crearUsuario(){
-
-        try{
+    let exists: boolean
           this.user.nombre = this.registerForm.controls['nombre'].value;
           this.user.apellido = this.registerForm.controls['apellido'].value;  
           this.user.id_celula = this.registerForm.controls['id_celula'].value;
           this.user.id_tipo_documento = this.registerForm.controls['id_tipo_documento'].value;
           this.user.documento = this.registerForm.controls['documento'].value;      
           this.user.correo = this.registerForm.controls['correo'].value;
-          this.user.contrasena = this.registerForm.controls['contrasena'].value          
+          this.user.contrasena = this.registerForm.controls['contrasena'].value;       
 
+        try{
           this.RegistrarseService.registrarUsuario(this.user).subscribe(
             (res:any)=>{
 
-                if (res.exists === false){
-                  console.log(this.user.correo, "HOLAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+                if (res.length === 0){
                   Swal.fire({
                   position: 'center',
                   icon: 'success',
@@ -125,7 +124,7 @@ export class RegistrarseComponent {
                   showConfirmButton: true,
                   confirmButtonText: "Listo",
                   timer: 1500
-                }); this.router.navigate(['/home']);
+                }); this.router.navigate(['/login']);
                 }else {
                   Swal.fire({
                     position: 'center',
