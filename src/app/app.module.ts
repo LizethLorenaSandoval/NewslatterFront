@@ -13,6 +13,7 @@ import { NotFoundComponent } from './componentes/not-found/not-found.component';
 import { HomeComponent } from './componentes/home/home.component';
 import { PerfilComponent } from './componentes/perfil/perfil.component';
 import { NavAdminIndexComponent } from './componentes/nav-admin-index/nav-admin-index.component';
+import { AdminUsuariosComponent } from './componentes/admin-usuarios/admin-usuarios.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { NavAdminIndexComponent } from './componentes/nav-admin-index/nav-admin-
     NotFoundComponent,
     HomeComponent,
     PerfilComponent,
-    NavAdminIndexComponent
+    NavAdminIndexComponent,
+    AdminUsuariosComponent
   ],
   imports: [
     BrowserModule,
