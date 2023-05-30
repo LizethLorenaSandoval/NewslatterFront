@@ -27,9 +27,14 @@
           </thead>
           <tbody *ngFor="let usuarios of usuarios">
             <tr>
+<!-- 
+              <p class="font-weight-bold text-success" *ngIf="id === 1">
+                {{ id === 1 ? "Activo" : "Inactivo" }}
+              </p> -->
               <th>{{ usuarios.id_usuario }}</th>
               <td>{{ usuarios.Nombre }}</td>
-              <td>{{ usuarios.id_estado_usuario }}</td>
+              <td *ngIf="usuarios.id_estado_usuario === 1">{{ usuarios.id_estado_usuario === 1 ? "Activo" : "Inactivo" }}</td>
+              <td *ngIf="usuarios.id_estado_usuario === 0">{{ usuarios.id_estado_usuario === 1 ? "Activo" : "Inactivo" }}</td>
               <td>{{ usuarios.nombre_tipo_documento }}</td>
               <td>{{ usuarios.documento }}</td>
               <td>{{ usuarios.nombre_celula | titlecase }}</td>
