@@ -12,6 +12,7 @@ import { HomeComponent } from './componentes/home/home.component';
 import { PerfilComponent } from './componentes/perfil/perfil.component';
 import { NavAdminIndexComponent } from './componentes/nav-admin-index/nav-admin-index.component';
 import { AdminUsuariosComponent } from './componentes/admin-usuarios/admin-usuarios.component';
+import { AdminRolComponent } from './componentes/admin-rol/admin-rol.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'login', pathMatch: 'full'},
@@ -26,6 +27,7 @@ const routes: Routes = [
   {path: 'perfil', component: PerfilComponent},
   {path: 'nav-admin-index', component: NavAdminIndexComponent},
   {path: 'admin-usuarios', component: AdminUsuariosComponent },
+  {path: 'admin-rol', component: AdminRolComponent},
   {path: '**', redirectTo: 'not-found'},
   
 ];

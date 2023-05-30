@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
-import { AdminUsuariosService } from 'src/app/servicios/admin-usuarios.service';
+import { AdminUsuariosService } from 'src/app/servicios/admin-usuarios/admin-usuarios.service';
 
 @Component({
   selector: 'app-admin-usuarios',

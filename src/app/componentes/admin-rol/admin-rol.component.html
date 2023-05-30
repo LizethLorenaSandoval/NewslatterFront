@@ -15,26 +15,16 @@
           <thead>
             <tr>
               <th scope="col">Id</th>
-              <th scope="col">Usuario</th>
+              <th scope="col">Rol</th>
               <th scope="col">Estado</th>
-              <th scope="col">Tipo documento</th>
-              <th scope="col">Documento</th>
-              <th scope="col">Id célula</th>
-              <th scope="col">Correo</th>
-              <th scope="col">Id rol</th>
               <th scope="col">Acciones</th>
             </tr>
           </thead>
-          <tbody *ngFor="let usuarios of usuarios">
+          <tbody *ngFor="let rol of rol">
             <tr>
-              <th>{{ usuarios.id_usuario }}</th>
-              <td>{{ usuarios.Nombre }}</td>
-              <td>{{ usuarios.id_estado_usuario }}</td>
-              <td>{{ usuarios.nombre_tipo_documento }}</td>
-              <td>{{ usuarios.documento }}</td>
-              <td>{{ usuarios.nombre_celula | titlecase }}</td>
-              <td>{{ usuarios.correo }}</td>
-              <td>{{ usuarios.nombre_rol | titlecase }}</td>
+              <td>{{rol.id_rol}}</td>
+              <td>{{rol.nombre_rol | titlecase}}</td>
+              <td>{{rol.nombre_estado_rol | titlecase}}</td>
               <td>
                 <i class="m-2 fa-solid fa-pen-to-square"></i>
                 <i class="m-2 fa-solid fa-trash"></i>
@@ -46,3 +36,4 @@
     </div>
   </body>
 </html>
+

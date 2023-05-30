@@ -14,7 +14,7 @@ import { HomeComponent } from './componentes/home/home.component';
 import { PerfilComponent } from './componentes/perfil/perfil.component';
 import { NavAdminIndexComponent } from './componentes/nav-admin-index/nav-admin-index.component';
 import { AdminUsuariosComponent } from './componentes/admin-usuarios/admin-usuarios.component';
-
+import { AdminRolComponent } from './componentes/admin-rol/admin-rol.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +28,8 @@ import { AdminUsuariosComponent } from './componentes/admin-usuarios/admin-usuar
     HomeComponent,
     PerfilComponent,
     NavAdminIndexComponent,
-    AdminUsuariosComponent
+    AdminUsuariosComponent,
+    AdminRolComponent,
   ],
   imports: [
     BrowserModule,
