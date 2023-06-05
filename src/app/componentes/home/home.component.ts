@@ -17,6 +17,9 @@ export class HomeComponent {
 	celulas: any = [];
 	estadoNota: any = [];
 	rows: any = [];
+	// Variables para el buscador
+	listFiltered = [];
+  	//searchTerm$ = new Subject<string>();
 
 
 	ngOnInit(){
@@ -66,5 +69,14 @@ export class HomeComponent {
 				console.log(this.estadoNota);
 		})
 	}
+
+	//Buscador
+	// filterList(): void {
+	// 	this.searchTerm$.subscribe(term => {
+	// 	  this.listFiltered = this.products
+	// 		.filter(item => item.nombre.toLowerCase().indexOf(term.toLowerCase()) >= 0);
+	// 	});
+	//   }
+	// }
 
 }

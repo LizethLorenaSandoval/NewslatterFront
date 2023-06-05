@@ -9,8 +9,32 @@
   <body>
     <app-nav-admin-index></app-nav-admin-index>
 
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="row d-flex">
+      
+              <div class="col-xl-12 col-sm-12 mt-3">
+                  <div class="mx-auto">
+                      <div class="input-group">
+                          <input placeholder="Busca una letter aquí" class="form-control border-end-0 border rounded-pill m-2" type="search" id="example-search-input">
+                          <span class="input-group-append">
+                          </span>
+                          <div class="col-xl-1 col-sm-2 mb-2">
+                              <div class="mx-auto">
+                                  <button type="button" (click)="open(content)" class="btn btn-outline-success m-2">Crear</button>
+                              </div>
+                            </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+        </div>
+      </div>
+  </div> 
+
     <div clas="container">
-      <div class="table-responsive mt-5 m-3">
+      <div class="table-responsive mt-3 m-3">
         <table class="table table-bordere shadow mb-5 f border border-top-0">
           <thead>
             <tr>
@@ -49,5 +73,91 @@
         </table>
       </div>
     </div>
+
+        <!-- MODALES -->
+
+<!-- Modal de crear -->
+
+<ng-template #content let-c="close" let-d="dismiss">
+	<div class="modal-header">
+		<h4 class="modal-title" id="modal-basic-title">Crear usuario</h4>
+		<button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
+	</div>
+	<div class="modal-body">
+		<form action class="example-form">
+            
+            <div class="row">
+                <div class="mb-3 form-group col-6">
+                  <label for="exampleInputEmail1" class="form-label">Nombre</label>
+                    
+                    <input 
+                    type="text"
+                    class="form-control"
+                    id="exampleFormControlInput1"
+                    placeholder="Pepito"/>
+                </div>
+
+                <div class="mb-3 form-group col-6">
+                  <label for="exampleInputEmail1" class="form-label">Apellido</label>
+                    
+                    <input 
+                    type="text"
+                    class="form-control"
+                    id="exampleFormControlInput1"
+                    placeholder="Perez"/>
+                </div>
+
+                <div class="mb-3 form-group">
+                  <label for="email" class="col-form-label ">Email</label>
+                  
+                    <input 
+                  type="email"
+                  class="form-control"
+                  id="exampleFormControlInput1"
+                  placeholder="Pepito@Perez.com"/>
+              </div>
+                
+                <div class="mb-3 form-group col-6">
+                  <label for="exampleInputEmail1" class="form-label"> Celula</label>
+                  <select class="form-select" aria-label="Default select example">
+                  <option *ngFor="let celulas of celulas" value="{{celulas.id_celula}}">{{celulas.nombre_celula | titlecase}}</option>
+                  </select>
+              </div>
+
+              <div class="mb-3 form-group col-6">
+                <label for="exampleInputEmail1" class="form-label"> Tipo de documento</label>
+                <select class="form-select" aria-label="Default select example">
+                <option *ngFor="let documento of documento" value="{{documento.id_tipo_documento}}">{{documento.nombre_tipo_documento | titlecase}}</option>
+                </select>
+            </div>
+
+            <div class="mb-3 form-group col-6">
+              <label for="exampleInputEmail1" class="form-label">Cédula</label>
+                
+                <input 
+                type="number"
+                class="form-control"
+                id="exampleFormControlInput1"
+                placeholder="123"/>
+            </div>
+
+            <div class="mb-3 form-group col-6">
+              <label for="pass" class="col-form-label">Contraseña</label>
+            
+              <input
+                type="password"
+                class="form-control"
+                id="inputPassword"/>
+          </div>
+
+            </div>  
+
+          </form>
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-outline-dark" >Crear usuario</button>
+	</div>
+</ng-template>
+
   </body>
 </html>
