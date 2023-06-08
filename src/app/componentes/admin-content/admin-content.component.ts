@@ -7,4 +7,21 @@ import { Component } from '@angular/core';
 })
 export class AdminContentComponent {
 
+  //Variables
+  valor: any = 1;
+
+  ngOnInit(){
+    console.log(this.valor);
+  }
+
+  cambiarValor(){
+
+    if (this.valor == 1){
+      this.valor = 0;
+    }else if (this.valor = 0) {
+      this.valor = 0;
+    }
+    // this.valor = 0;
+    // console.log(this.valor);
+  }
 }

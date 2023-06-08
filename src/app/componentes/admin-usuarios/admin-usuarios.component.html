@@ -7,7 +7,8 @@
     <title>Usuarios</title>
   </head>
   <body>
-    <app-nav-admin-index></app-nav-admin-index>
+
+      <app-nav-admin-index ></app-nav-admin-index>
 
     <div class="container">
       <div class="row">
@@ -17,7 +18,7 @@
               <div class="col-xl-12 col-sm-12 mt-3">
                   <div class="mx-auto">
                       <div class="input-group">
-                          <input placeholder="Busca una letter aquí" class="form-control border-end-0 border rounded-pill m-2" type="search" id="example-search-input">
+                          <input [(ngModel)]="busqueda" (keyup)="filtrarUsuario(busqueda)" placeholder="Busca un usuario aquí" class="form-control border-end-0 border rounded-pill m-2" type="search" id="example-search-input">
                           <span class="input-group-append">
                           </span>
                           <div class="col-xl-1 col-sm-2 mb-2">
@@ -32,8 +33,8 @@
         </div>
       </div>
   </div> 
-
-    <div clas="container">
+  
+    <div *ngIf="usuarios.length >0" clas="container">
       <div class="table-responsive mt-3 m-3">
         <table class="table table-bordere shadow mb-5 f border border-top-0">
           <thead>
@@ -43,20 +44,16 @@
               <th scope="col">Estado</th>
               <th scope="col">Tipo documento</th>
               <th scope="col">Documento</th>
-              <th scope="col">Id célula</th>
+              <th scope="col">Célula</th>
               <th scope="col">Correo</th>
-              <th scope="col">Id rol</th>
+              <th scope="col">Rol</th>
               <th scope="col">Acciones</th>
             </tr>
           </thead>
-          <tbody *ngFor="let usuarios of usuarios">
+          <tbody *ngFor="let usuarios of usuariosFiltrados">
             <tr>
-<!-- 
-              <p class="font-weight-bold text-success" *ngIf="id === 1">
-                {{ id === 1 ? "Activo" : "Inactivo" }}
-              </p> -->
               <th>{{ usuarios.id_usuario }}</th>
-              <td>{{ usuarios.Nombre }}</td>
+              <td>{{ usuarios.Nombre | titlecase }}</td>
               <td *ngIf="usuarios.id_estado_usuario === 1">{{ usuarios.id_estado_usuario === 1 ? "Activo" : "Inactivo" }}</td>
               <td *ngIf="usuarios.id_estado_usuario === 0">{{ usuarios.id_estado_usuario === 1 ? "Activo" : "Inactivo" }}</td>
               <td>{{ usuarios.nombre_tipo_documento }}</td>
@@ -74,14 +71,20 @@
       </div>
     </div>
 
-        <!-- MODALES -->
+    <div *ngIf="usuarios.length == 0" clas="container">
+      <div class="table-responsive mt-3 m-3">
+        <h4>No hay datos para mostrar </h4>
+      </div>
+    </div>
+
+<!-- MODALES -->
 
 <!-- Modal de crear -->
 
 <ng-template #content let-c="close" let-d="dismiss">
 	<div class="modal-header">
 		<h4 class="modal-title" id="modal-basic-title">Crear usuario</h4>
-		<button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
+		<button type="button" class="btn-close" aria-label="Close" (click)="('Cross click')"></button>
 	</div>
 	<div class="modal-body">
 		<form action class="example-form">

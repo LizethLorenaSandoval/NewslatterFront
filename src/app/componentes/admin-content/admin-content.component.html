@@ -4,81 +4,82 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Nav admin</title>
+    <title>Menu admin</title>
   </head>
   <body>
-    <div class="row m-2 mt-5">
+
+    <div *ngIf="valor == 1" class="row m-2 mt-5">
       
         <h1>Bienvenido administrador</h1>
         
-      <div class="col-sm-4 mb-3 mb-sm-0 mt-3">
+      <div class="col-sm-4 mb-4 mb-sm-0 mt-3">
         <div class="card">
           <div class="card-body">
             <h5 class="card-title">Módulo Roles <i class="fa-sharp fa-light fa-wand-magic-sparkles"></i> </h5> 
             <p class="card-text">
                 En este módulo se gestionan los roles que se manejaran dentro del aplicativo
             </p>
-            <a [routerLink]="['/admin-rol']" class="card-link">Ir al módulo de roles</a>
+            <a [routerLink]="['/admin-rol']" class="card-link" (click)="cambiarValor()" >Ir al módulo de roles</a>
           </div>
         </div>
       </div>
       
-      <div class="col-sm-4 mb-3 mb-sm-0 mt-3">
+      <div class="col-sm-4 mb-4 mb-sm-0 mt-3">
         <div class="card">
           <div class="card-body">
             <h5 class="card-title">Módulo Usuarios <i class="fa-solid fa-users"></i> </h5>
             <p class="card-text">
                 En este módulo se gestionan los usuarios con acceso al aplicativo.
             </p>
-            <a [routerLink]="['/admin-usuarios']" class="card-link">Ir al módulo de usuarios</a>
+            <a [routerLink]="['/admin-usuarios']" class="card-link" (click)="cambiarValor()" >Ir al módulo de usuarios</a>
           </div>
         </div>
       </div>
 
-      <div class="col-sm-4 mb-3 mb-sm-0 mt-3">
+      <div class="col-sm-4 mb-4 mb-sm-0 mt-3">
         <div class="card">
           <div class="card-body">
             <h5 class="card-title">Módulo Celulas <i class="fa-sharp fa-light fa-shapes"></i> </h5>
             <p class="card-text">
                 En este módulo se gestionan las células que hay dentro de la empresa.
             </p>
-            <a href="#" class="card-link">Ir al módulo de Celulas</a>
+            <a href="#" class="card-link" >Ir al módulo de Celulas</a>
           </div>
         </div>
       </div>
 
-      <div class="col-sm-4 mb-3 mb-sm-0 mt-3">
+      <div class="col-sm-4 mb-4 mb-sm-0 mt-3">
         <div class="card">
           <div class="card-body">
             <h5 class="card-title">Módulo Tipo de Documento <i class="fa-sharp fa-light fa-fingerprint"></i> </h5>
             <p class="card-text">
                 En este módulo se gestionan los tipos de documento que se manejan en el aplicativo.
             </p>
-            <a href="#" class="card-link">Ir al módulo de Tipo de Documento</a>
+            <a href="#" class="card-link" >Ir al módulo de Tipo de Documento</a>
           </div>
         </div>
       </div>
 
-      <div class="col-sm-4 mb-3 mb-sm-0 mt-3">
+      <div class="col-sm-4 mb-4 mb-sm-0 mt-3">
         <div class="card">
           <div class="card-body">
             <h5 class="card-title">Módulo de Notas <i class="fa-regular fa-newspaper"></i> </h5>
             <p class="card-text">
                 En este módulo se gestionan las notas o noticias que se muestran en el aplicativo.
             </p>
-            <a href="#" class="card-link">Ir al módulo de Notas</a>
+            <a href="#" class="card-link" >Ir al módulo de Notas</a>
           </div>
         </div>
       </div>
 
-      <div class="col-sm-4 mb-3 mb-sm-0 mt-3">
+      <div class="col-sm-4 mb-4 mb-sm-0 mt-3">
         <div class="card">
           <div class="card-body">
             <h5 class="card-title">Módulo de Comentarios <i class="fa-regular fa-comments"></i> </h5>
             <p class="card-text">
                 En este módulo se gestionan los comentarios que hay dentro de las notas del aplicativo.
             </p>
-            <a href="#" class="card-link">Ir al módulo de Comentarios</a>
+            <a href="#" class="card-link" >Ir al módulo de Comentarios</a>
           </div>
         </div>
       </div>

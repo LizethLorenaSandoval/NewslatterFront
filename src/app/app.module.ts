@@ -16,6 +16,7 @@ import { NavAdminIndexComponent } from './componentes/nav-admin-index/nav-admin-
 import { AdminUsuariosComponent } from './componentes/admin-usuarios/admin-usuarios.component';
 import { AdminRolComponent } from './componentes/admin-rol/admin-rol.component';
 import { AdminContentComponent } from './componentes/admin-content/admin-content.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { AdminContentComponent } from './componentes/admin-content/admin-content
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
