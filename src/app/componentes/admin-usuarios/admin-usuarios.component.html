@@ -41,26 +41,27 @@
             <tr>
               <th scope="col">Id</th>
               <th scope="col">Usuario</th>
-              <th scope="col">Estado</th>
+              <th scope="col">Rol</th>
               <th scope="col">Tipo documento</th>
               <th scope="col">Documento</th>
               <th scope="col">Célula</th>
               <th scope="col">Correo</th>
-              <th scope="col">Rol</th>
+              <th scope="col">Estado</th>
               <th scope="col">Acciones</th>
             </tr>
           </thead>
-          <tbody *ngFor="let usuarios of usuariosFiltrados">
+          <tbody *ngFor="let usuarios of usuarios">
             <tr>
               <th>{{ usuarios.id_usuario }}</th>
               <td>{{ usuarios.Nombre | titlecase }}</td>
-              <td *ngIf="usuarios.id_estado_usuario === 1">{{ usuarios.id_estado_usuario === 1 ? "Activo" : "Inactivo" }}</td>
-              <td *ngIf="usuarios.id_estado_usuario === 0">{{ usuarios.id_estado_usuario === 1 ? "Activo" : "Inactivo" }}</td>
+              <td>{{ usuarios.nombre_rol | titlecase }}</td>
               <td>{{ usuarios.nombre_tipo_documento }}</td>
               <td>{{ usuarios.documento }}</td>
               <td>{{ usuarios.nombre_celula | titlecase }}</td>
               <td>{{ usuarios.correo }}</td>
-              <td>{{ usuarios.nombre_rol | titlecase }}</td>
+              <td *ngIf="usuarios.id_estado_usuario === 1">{{ usuarios.id_estado_usuario === 1 ? "Activo" : "Inactivo" }}</td>
+              <td *ngIf="usuarios.id_estado_usuario === 0">{{ usuarios.id_estado_usuario === 1 ? "Activo" : "Inactivo" }}</td>
+              
               <td>
                 <i class="m-2 fa-solid fa-pen-to-square"></i>
                 <i class="m-2 fa-solid fa-trash"></i>

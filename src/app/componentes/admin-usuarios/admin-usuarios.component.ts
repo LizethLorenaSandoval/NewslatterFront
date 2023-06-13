@@ -17,8 +17,7 @@ export class AdminUsuariosComponent {
   documento: any = [];
   rol: any = [];
   usuarios: any = [];
-  usuariosFiltrados: any = [];
-  busqueda: any = '';
+  busqueda: any = [];
   _filterRows: any = [];
 
   ngOnInit() {
@@ -51,8 +50,7 @@ export class AdminUsuariosComponent {
   getusuariosAdmin() {
     this.AdminUsuariosService.getusuariosAdmin().subscribe((res) => {
       this.usuarios = res;
-      this.usuariosFiltrados = res;
-      console.log(this.usuarios);
+      console.log("usuarios ",this.usuarios);
 
       this._filterRows = res;
     });
@@ -93,24 +91,21 @@ export class AdminUsuariosComponent {
 
 
   filtrarUsuario(busqueda:any) {
-    
-    this.usuariosFiltrados = this.usuarios.filter((item:any) =>{
-      item.nombre.toLowerCase().includes(this.busqueda.toLowerCase())
-    })
 
+    if (this.busqueda){
+      
+      const filterData = this.usuarios.filter((usuarios:any) =>
+        usuarios.Nombre.toLowerCase().includes(this.busqueda.toLowerCase()) ||
+        usuarios.id_usuario.toString().toLowerCase().includes(this.busqueda.toLowerCase()) ||
+        usuarios.documento.toString().toLowerCase().includes(this.busqueda.toLowerCase()) ||
+        usuarios.correo.toLowerCase().includes(this.busqueda.toLowerCase()) ||
+        usuarios.nombre_celula.toLowerCase().includes(this.busqueda.toLowerCase()))
 
-
-
-    // const filterData = this._filterRows.filter((busqueda:any) =>{      
-    //   const filterData = 
-    //   busqueda.nombre.toLowerCase().includes(this.busqueda.toLowerCase()) ||
-    //   busqueda.apellido.toLowerCase().includes(this.busqueda.toLowerCase())
-
-    //   return filterData;
-    // });
-
-    // this.filterRows = filterData
-
-    // console.log("Dato de busqueda ingresado -->",filterData);
+        this.filterRows = filterData
+        console.log("filterData ->",filterData);
+        
+    } else {
+      this.getusuariosAdmin()
+    }
   }
 }

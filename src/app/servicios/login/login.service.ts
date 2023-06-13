@@ -5,19 +5,10 @@ import { environment } from '../../../environments/environment';
 @Injectable({
   providedIn: 'root'
 })
-export class AdminUsuariosService {
+
+export class LoginService {
 
   API_URL = environment.API_URL;
 
   constructor(private http: HttpClient) { }
-
-   // Aquí se llaman las apis del back
-
-   getusuariosAdmin(){
-    return this.http.get(`${this.API_URL}/usuario`)
-  }
-
-  // getusuariosAdminById(busqueda:any){
-  //   return this.http.get(`${this.API_URL}/usuario/:id`,busqueda)
-  // }
 }
