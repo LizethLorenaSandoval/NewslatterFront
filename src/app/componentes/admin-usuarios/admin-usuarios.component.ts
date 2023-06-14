@@ -93,23 +93,16 @@ export class AdminUsuariosComponent {
 
 
   filtrarUsuario(busqueda:any) {
+    const filterData = this.usuarios.filter((usuarios:any) =>
+      usuarios.Nombre.toLowerCase().includes(this.busqueda.toLowerCase()) ||
+      usuarios.id_usuario.toString().toLowerCase().includes(this.busqueda.toLowerCase()) ||
+      usuarios.documento.toString().toLowerCase().includes(this.busqueda.toLowerCase()) ||
+      usuarios.correo.toLowerCase().includes(this.busqueda.toLowerCase()) ||
+      usuarios.nombre_celula.toLowerCase().includes(this.busqueda.toLowerCase()) ||
+      usuarios.nombre_tipo_documento.toLowerCase().includes(this.busqueda.toLowerCase()) ||
+      usuarios.nombre_rol.toLowerCase().includes(this.busqueda.toLowerCase()))
 
-    if (this.busqueda){
-      
-      const filterData = this.usuarios.filter((usuarios:any) =>
-        usuarios.Nombre.toLowerCase().includes(this.busqueda.toLowerCase()) ||
-        usuarios.id_usuario.toString().toLowerCase().includes(this.busqueda.toLowerCase()) ||
-        usuarios.documento.toString().toLowerCase().includes(this.busqueda.toLowerCase()) ||
-        usuarios.correo.toLowerCase().includes(this.busqueda.toLowerCase()) ||
-        usuarios.nombre_celula.toLowerCase().includes(this.busqueda.toLowerCase()) ||
-        usuarios.nombre_tipo_documento.toLowerCase().includes(this.busqueda.toLowerCase()) ||
-        usuarios.nombre_rol.toLowerCase().includes(this.busqueda.toLowerCase()))
-
-        this.filterRows = filterData
-        console.log("filterData ->",filterData);
-        
-    } else {
-      this.getusuariosAdmin()
-    }
+      this.filterRows = filterData
+      console.log("filterData ->",filterData);
   }
 }
