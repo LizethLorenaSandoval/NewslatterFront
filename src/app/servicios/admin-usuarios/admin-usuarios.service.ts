@@ -16,8 +16,4 @@ export class AdminUsuariosService {
    getusuariosAdmin(){
     return this.http.get(`${this.API_URL}/usuario`)
   }
-
-  // getusuariosAdminById(busqueda:any){
-  //   return this.http.get(`${this.API_URL}/usuario/:id`,busqueda)
-  // }
 }

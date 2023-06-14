@@ -4,121 +4,146 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/angular-material/1.2.5/angular-material.min.css"
-    />
   </head>
   <body class="row aling-items-center justify-content-center vh-100">
-
     <section class="vh-100">
-        <div class="container py-5 h-100">
-          <div class="d-lg-flex col-lg-12 align-items-center p-4 border rounded-4 shadow f">
+      <div class="container py-5 h-100">
+        <div
+          class="d-lg-flex col-lg-12 align-items-center p-4 border rounded-4 shadow f"
+        >
+          <div class="col-md-12 col-lg-6 col-xl-6">
+            <img
+              class="img-fluid"
+              src="https://media.istockphoto.com/id/1364735396/es/vector/lista-de-comprobaci%C3%B3n-icono-dise%C3%B1o-plano.jpg?s=612x612&w=0&k=20&c=MY022-KOWot_dwvMEOywSPMJRbqrcJ6NfKfqvi1vM70="
+              class="img-fluid"
+            />
+          </div>
 
-            <div class="col-md-12 col-lg-6 col-xl-6">
-                <img class="img-fluid" src="https://media.istockphoto.com/id/1364735396/es/vector/lista-de-comprobaci%C3%B3n-icono-dise%C3%B1o-plano.jpg?s=612x612&w=0&k=20&c=MY022-KOWot_dwvMEOywSPMJRbqrcJ6NfKfqvi1vM70=" class="img-fluid">
-            </div>  
+          <div class="col-md-12 col-lg-5 col-xl-5 offset-xl-1">
+            <form action class="example-form">
+              <div class="col-12 text-center">
+                <h2>Registrate</h2>
+              </div>
 
-            <div class="col-md-12 col-lg-5 col-xl-5 offset-xl-1 ">
-              <form action class="example-form">
-                <div class="col-12 text-center">
-                    <h2>Registrate</h2>
+              <div class="row">
+                <div class="mb-3 form-group col-6">
+                  <label for="email" class="col-form-label">Nombre</label>
+
+                  <input
+                    type="text"
+                    class="form-control"
+                    formControlName="nombre"
+                    autofocus
+                    id="nombre"
+                    placeholder="Pepito"
+                  />
+                  <!-- <span class="text-danger">Este campo es requerido</span> -->
                 </div>
-                
-                <div class="row">
-                    <div class="mb-3 form-group col-6">
-                        <label for="email" class="col-form-label">Nombre</label>
-                        
-                        <input 
-                        type="text"
-                        class="form-control"
-                        formControlName="nombre"
-                        autofocus
-                        id="nombre"
-                        placeholder="Pepito"/>
-                        <span class="text-danger" *ngIf="validField('nombre')"
-                        >Este campo es requerido</span
+
+                <div class="mb-3 form-group col-6">
+                  <label for="email" class="col-form-label">Apellido</label>
+
+                  <input
+                    type="text"
+                    class="form-control"
+                    formControlName="apellido"
+                    autofocus
+                    id="apellido"
+                    placeholder="Perez"
+                  />
+                  <!-- <span class="text-danger">Este campo es requerido</span> -->
+                </div>
+
+                <div
+                  class="mb-3 form-group col-12"
+                  formControlName="id_celula"
+                  autofocus
                 >
-                    </div>
-    
-    
-                    <div class="mb-3 form-group col-6">
-                        <label for="email" class="col-form-label ">Apellido</label>
-                        
-                        <input 
-                        type="text"
-                        class="form-control"
-                        formControlName="apellido"
-                        autofocus
-                        id="apellido"
-                        placeholder="Perez"/>
-                        <span class="text-danger" *ngIf="validField('apellido')"
-                        >Este campo es requerido</span>
-                    </div>
-                    
+                  <label for="email" class="col-form-label" id="id_celula"
+                    >Celula</label
+                  >
+                  <select
+                    class="form-select"
+                    aria-label="Default select example"
+                  >
+                    <option
+                      *ngFor="let celulas of celulas"
+                      value="{{ celulas.id_celula }}"
+                    >
+                      {{ celulas.nombre_celula | titlecase }}
+                    </option>
+                  </select>
+                  <!-- <span class="text-danger">Este campo es requerido</span> -->
+                </div>
 
-                    <div class="mb-3 form-group col-12" formControlName="id_celula" autofocus>
-                        <label for="email" class="col-form-label " id="id_celula">Celula</label>
-                        <select class="form-select" aria-label="Default select example" >
-                            <option *ngFor="let celulas of celulas" value="{{celulas.id_celula}}">{{celulas.nombre_celula | titlecase}}</option>
-                        </select>
-                        <span class="text-danger" *ngIf="validField('id_celula')"
-                        >Este campo es requerido</span>
-                    </div>
+                <div
+                  class="mb-3 form-group col-12"
+                  formControlName="id_tipo_documento"
+                  autofocus
+                >
+                  <label
+                    for="email"
+                    class="col-form-label"
+                    id="id_tipo_documento"
+                    >Tipo de documento</label
+                  >
+                  <select
+                    class="form-select"
+                    aria-label="Default select example"
+                  >
+                    <option
+                      *ngFor="let tipo_documento of tipo_documento"
+                      value="{{ tipo_documento.id_tipo_documento }}"
+                    >
+                      {{ tipo_documento.nombre_tipo_documento }}
+                    </option>
+                  </select>
+                  <!-- <span class="text-danger">Este campo es requerido</span> -->
+                </div>
 
-                    <div class="mb-3 form-group col-12" formControlName="id_tipo_documento" autofocus>
-                        <label for="email" class="col-form-label " id="id_tipo_documento">Tipo de documento</label>
-                        <select class="form-select" aria-label="Default select example" >
-                            <option  *ngFor="let tipo_documento of tipo_documento" value="{{tipo_documento.id_tipo_documento}}">{{tipo_documento.nombre_tipo_documento}}</option>
-                        </select>
-                        <span class="text-danger" *ngIf="validField('id_tipo_documento')"
-                        >Este campo es requerido</span>
-                    </div>
+                <div class="mb-3 form-group col-6">
+                  <label for="email" class="col-form-label"
+                    >Número de documento</label
+                  >
 
-                    <div class="mb-3 form-group col-6">
-                        <label for="email" class="col-form-label ">Número de documento</label>
-                        
-                        <input 
-                        type="number"
-                        class="form-control"
-                        formControlName="documento"
-                        autofocus
-                        id="documento"/>
-                        <span class="text-danger" *ngIf="validField('documento')"
-                        >Este campo es requerido</span>
-                    </div>
+                  <input
+                    type="number"
+                    class="form-control"
+                    formControlName="documento"
+                    autofocus
+                    id="documento"
+                  />
+                  <!-- <span class="text-danger">Este campo es requerido</span> -->
+                </div>
 
-                    
-                    <div class="mb-3 form-group col-6">
-                        <label for="email" class="col-form-label ">Email</label>
-                        
-                        <input 
-                        type="email"
-                        class="form-control"
-                        formControlName="correo"
-                        autofocus
-                        id="correo"
-                        placeholder="Pepito@Perez.com"/>
-                        <span class="text-danger" *ngIf="validField('correo')"
-                        >Este campo es requerido</span>
-                    </div>
+                <div class="mb-3 form-group col-6">
+                  <label for="email" class="col-form-label">Email</label>
 
+                  <input
+                    type="email"
+                    class="form-control"
+                    formControlName="correo"
+                    autofocus
+                    id="correo"
+                    placeholder="Pepito@Perez.com"
+                  />
+                  <!-- <span class="text-danger">Este campo es requerido</span> -->
+                </div>
 
-                    <div class="mb-2 form-group col-12">
-                        <label for="email" class="col-form-label ">Contraseña</label>
-                        
-                        <input 
-                        type="password"
-                        class="form-control"
-                        formControlName="contrasena"
-                        autofocus
-                        id="contrasena"/>
-                        <span class="text-danger" *ngIf="validField('contrasena')"
-                        >Este campo es requerido</span>
-                    </div>
+                <div class="mb-2 form-group col-12">
+                  <label for="email" class="col-form-label">Contraseña</label>
 
+                  <input
+                    type="password"
+                    class="form-control"
+                    formControlName="contrasena"
+                    autofocus
+                    id="contrasena"
+                  />
+                  <!-- <span class="text-danger">Este campo es requerido</span> -->
+                </div>
 
-                    <!-- <div class="mb-2 form-group col-12">
+                <!-- <div class="mb-2 form-group col-12">
                         <label for="email" class="col-form-label ">Confirmar contraseña</label>
                         
                         <input 
@@ -127,34 +152,31 @@
                         formControlName="confirmPassword"
                         autofocus
                         id="confirmPassword"/>
-                        <span class="text-danger" *ngIf="validField('confirmPassword')"
+                        <span class="text-danger" 
                         >Este campo es requerido <br
                         /></span>
                         <span class="text-danger" *ngIf="validPassword()"
                         >Las Contraseñas no son iguales</span
                 >
                     </div> -->
-                </div>
-      
-
-                <!-- Submit button -->
-                <div class="d-flex justify-content-around align-items-center mb-3 row p-2">
-                <button  class="btn btn-info" (click)="crearUsuario()"
-                >Registrarme</button>
-
-                </div>
-
-               
-      
-              </form>
-              <div class="d-flex justify-content-around align-items-center mb-4">
-                <!-- Checkbox -->
-                <a [routerLink]="['/login']" >¿Ya tienes una cuenta?, inicia sesión aquí</a>
               </div>
+
+              <!-- Submit button -->
+              <div
+                class="d-flex justify-content-around align-items-center mb-3 row p-2"
+              >
+                <button class="btn btn-info">Registrarme</button>
+              </div>
+            </form>
+            <div class="d-flex justify-content-around align-items-center mb-4">
+              <!-- Checkbox -->
+              <a [routerLink]="['/login']"
+                >¿Ya tienes una cuenta?, inicia sesión aquí</a
+              >
             </div>
           </div>
-          </div>
-      </section>
-
+        </div>
+      </div>
+    </section>
   </body>
-
+</html>

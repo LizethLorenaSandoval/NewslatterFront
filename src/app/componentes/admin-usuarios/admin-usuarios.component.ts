@@ -10,6 +10,7 @@ import { AdminRolService } from 'src/app/servicios/admin-rol/admin-rol.service';
   templateUrl: './admin-usuarios.component.html',
   styleUrls: ['./admin-usuarios.component.scss'],
   providers: [NgbModalConfig, NgbModal],
+  
 })
 export class AdminUsuariosComponent {
   // Variables
@@ -17,7 +18,7 @@ export class AdminUsuariosComponent {
   documento: any = [];
   rol: any = [];
   usuarios: any = [];
-  busqueda: any = [];
+  busqueda: any = [] = [];
   _filterRows: any = [];
 
   ngOnInit() {
@@ -25,6 +26,7 @@ export class AdminUsuariosComponent {
     this.getCelulas();
     this.getTipoDoc();
     this.getRoles();
+
   }
 
   constructor(
@@ -99,7 +101,9 @@ export class AdminUsuariosComponent {
         usuarios.id_usuario.toString().toLowerCase().includes(this.busqueda.toLowerCase()) ||
         usuarios.documento.toString().toLowerCase().includes(this.busqueda.toLowerCase()) ||
         usuarios.correo.toLowerCase().includes(this.busqueda.toLowerCase()) ||
-        usuarios.nombre_celula.toLowerCase().includes(this.busqueda.toLowerCase()))
+        usuarios.nombre_celula.toLowerCase().includes(this.busqueda.toLowerCase()) ||
+        usuarios.nombre_tipo_documento.toLowerCase().includes(this.busqueda.toLowerCase()) ||
+        usuarios.nombre_rol.toLowerCase().includes(this.busqueda.toLowerCase()))
 
         this.filterRows = filterData
         console.log("filterData ->",filterData);

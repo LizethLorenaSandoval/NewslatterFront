@@ -50,7 +50,7 @@
               <th scope="col">Acciones</th>
             </tr>
           </thead>
-          <tbody *ngFor="let usuarios of usuarios">
+          <tbody *ngFor="let usuarios of _filterRows">
             <tr>
               <th>{{ usuarios.id_usuario }}</th>
               <td>{{ usuarios.Nombre | titlecase }}</td>

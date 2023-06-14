@@ -16,7 +16,8 @@ import { NavAdminIndexComponent } from './componentes/nav-admin-index/nav-admin-
 import { AdminUsuariosComponent } from './componentes/admin-usuarios/admin-usuarios.component';
 import { AdminRolComponent } from './componentes/admin-rol/admin-rol.component';
 import { AdminContentComponent } from './componentes/admin-content/admin-content.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FilterPipeModule } from 'ngx-filter-pipe'
 
 @NgModule({
   declarations: [
@@ -38,7 +39,9 @@ import { FormsModule } from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule,
+    FilterPipeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
