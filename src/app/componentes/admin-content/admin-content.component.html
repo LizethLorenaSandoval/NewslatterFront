@@ -43,7 +43,7 @@
             <p class="card-text">
                 En este módulo se gestionan las células que hay dentro de la empresa.
             </p>
-            <a href="#" class="card-link" >Ir al módulo de Celulas</a>
+            <a [routerLink]="['/admin-celulas']" class="card-link" (click)="cambiarValor()" >Ir al módulo de Celulas</a>
           </div>
         </div>
       </div>
@@ -55,7 +55,7 @@
             <p class="card-text">
                 En este módulo se gestionan los tipos de documento que se manejan en el aplicativo.
             </p>
-            <a href="#" class="card-link" >Ir al módulo de Tipo de Documento</a>
+            <a href="#" class="card-link" (click)="cambiarValor()" >Ir al módulo de Tipo de Documento</a>
           </div>
         </div>
       </div>
@@ -67,7 +67,7 @@
             <p class="card-text">
                 En este módulo se gestionan las notas o noticias que se muestran en el aplicativo.
             </p>
-            <a href="#" class="card-link" >Ir al módulo de Notas</a>
+            <a href="#" class="card-link" (click)="cambiarValor()" >Ir al módulo de Notas</a>
           </div>
         </div>
       </div>
@@ -79,7 +79,7 @@
             <p class="card-text">
                 En este módulo se gestionan los comentarios que hay dentro de las notas del aplicativo.
             </p>
-            <a href="#" class="card-link" >Ir al módulo de Comentarios</a>
+            <a href="#" class="card-link" (click)="cambiarValor()" >Ir al módulo de Comentarios</a>
           </div>
         </div>
       </div>

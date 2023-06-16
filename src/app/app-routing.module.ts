@@ -13,6 +13,7 @@ import { PerfilComponent } from './componentes/perfil/perfil.component';
 import { NavAdminIndexComponent } from './componentes/nav-admin-index/nav-admin-index.component';
 import { AdminUsuariosComponent } from './componentes/admin-usuarios/admin-usuarios.component';
 import { AdminRolComponent } from './componentes/admin-rol/admin-rol.component';
+import { AdminCelulasComponent } from './componentes/admin-celulas/admin-celulas.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'login', pathMatch: 'full'},
@@ -28,6 +29,7 @@ const routes: Routes = [
   {path: 'nav-admin-index', component: NavAdminIndexComponent},
   {path: 'admin-usuarios', component: AdminUsuariosComponent },
   {path: 'admin-rol', component: AdminRolComponent},
+  {path: 'admin-celulas', component: AdminCelulasComponent},
   {path: '**', redirectTo: 'not-found'},
   
 ];

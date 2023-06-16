@@ -17,7 +17,8 @@ import { AdminUsuariosComponent } from './componentes/admin-usuarios/admin-usuar
 import { AdminRolComponent } from './componentes/admin-rol/admin-rol.component';
 import { AdminContentComponent } from './componentes/admin-content/admin-content.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { FilterPipeModule } from 'ngx-filter-pipe'
+import { FilterPipeModule } from 'ngx-filter-pipe';
+import { AdminCelulasComponent } from './componentes/admin-celulas/admin-celulas.component'
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { FilterPipeModule } from 'ngx-filter-pipe'
     AdminUsuariosComponent,
     AdminRolComponent,
     AdminContentComponent,
+    AdminCelulasComponent,
   ],
   imports: [
     BrowserModule,
