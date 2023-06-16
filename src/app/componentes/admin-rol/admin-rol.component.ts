@@ -12,6 +12,8 @@ export class AdminRolComponent {
 
     // Variables
     rol: any = [];
+    busqueda: any = [] = [];
+    _filterRows: any = [];
 
     ngOnInit(){
       this.getrolesAdmin();
@@ -34,7 +36,30 @@ export class AdminRolComponent {
       getrolesAdmin(){
         this.AdminRolServices.getrolesAdmin().subscribe((res) =>{
           this.rol = res;
-          console.log(this.rol)
+          console.log(this.rol);
+
+          this._filterRows = res;
         })
       };
+
+  // Get y Set del buscador
+  get filterRows(): any {
+    return this._filterRows;
+  }
+
+  set filterRows(value) {
+    this._filterRows = value;
+  }
+
+  filtrarRol(busqueda:any) {
+
+    const filterData = this.rol.filter((rol:any)=>
+      rol.id_rol.toString().toLowerCase().includes(this.busqueda.toLowerCase()) ||
+      rol.nombre_rol.toLowerCase().includes(this.busqueda.toLowerCase()) ||
+      rol.nombre_estado_rol.toLowerCase().includes(this.busqueda.toLowerCase())
+    )
+
+    this.filterRows = filterData;
+    console.log("filterData ->",filterData);
+  }
 }

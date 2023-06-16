@@ -9,7 +9,31 @@
   <body>
     <app-nav-admin-index></app-nav-admin-index>
 
-    <div clas="container">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="row d-flex">
+      
+              <div class="col-xl-12 col-sm-12 mt-3">
+                  <div class="mx-auto">
+                      <div class="input-group">
+                          <input [(ngModel)]="busqueda" (keyup)="filtrarRol(busqueda)" placeholder="Busca un usuario aquí" class="form-control border-end-0 border rounded-pill m-2" type="search" id="example-search-input">
+                          <span class="input-group-append">
+                          </span>
+                          <div class="col-xl-1 col-sm-2 mb-2">
+                              <div class="mx-auto">
+                                  <button type="button" (click)="open(content)" class="btn btn-outline-success m-2">Crear</button>
+                              </div>
+                            </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+        </div>
+      </div>
+  </div> 
+    
+    <div *ngIf="rol.length > 0" clas="container">
       <div class="table-responsive mt-3 m-3">
         <table class="table table-bordere shadow mb-5 f border border-top-0">
           <thead>
@@ -20,7 +44,7 @@
               <th scope="col">Acciones</th>
             </tr>
           </thead>
-          <tbody *ngFor="let rol of rol">
+          <tbody *ngFor="let rol of _filterRows">
             <tr>
               <td>{{rol.id_rol}}</td>
               <td>{{rol.nombre_rol | titlecase}}</td>
@@ -34,6 +58,44 @@
         </table>
       </div>
     </div>
+
+    <div *ngIf="rol.length == 0" clas="container">
+      <div class="table-responsive mt-3 m-3">
+        <h4>No hay datos para mostrar </h4>
+      </div>
+    </div>
+
+    <!-- MODALES -->
+
+<!-- Modal de crear -->
+
+<ng-template #content let-c="close" let-d="dismiss">
+	<div class="modal-header">
+		<h4 class="modal-title" id="modal-basic-title">Crear rol</h4>
+		<button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
+	</div>
+	<div class="modal-body">
+		<form action class="example-form">
+            
+            <div class="row">
+                <div class="mb-3 form-group col-12">
+                  <label for="exampleInputEmail1" class="form-label">Nombre del rol</label>
+                    
+                    <input 
+                    type="text"
+                    class="form-control"
+                    id="exampleFormControlInput1"
+                    placeholder="Administrador"/>
+                </div>
+              </div>            
+          </form>
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-outline-dark" >Crear rol</button>
+	</div>
+</ng-template>
+
+
   </body>
 </html>
 

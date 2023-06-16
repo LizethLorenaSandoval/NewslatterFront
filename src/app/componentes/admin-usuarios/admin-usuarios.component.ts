@@ -102,7 +102,7 @@ export class AdminUsuariosComponent {
       usuarios.nombre_tipo_documento.toLowerCase().includes(this.busqueda.toLowerCase()) ||
       usuarios.nombre_rol.toLowerCase().includes(this.busqueda.toLowerCase()))
 
-      this.filterRows = filterData
+      this.filterRows = filterData;
       console.log("filterData ->",filterData);
   }
 }
