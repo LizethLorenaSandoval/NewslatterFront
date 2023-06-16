@@ -17,7 +17,7 @@
               <div class="col-xl-12 col-sm-12 mt-3">
                   <div class="mx-auto">
                       <div class="input-group">
-                          <input [(ngModel)]="busqueda" (keyup)="filtrarUsuario(busqueda)" placeholder="Busca una célula aquí" class="form-control border-end-0 border rounded-pill m-2" type="search" id="example-search-input">
+                          <input [(ngModel)]="busqueda" (keyup)="filtrarCelula(busqueda)" placeholder="Busca una célula aquí" class="form-control border-end-0 border rounded-pill m-2" type="search" id="example-search-input">
                           <span class="input-group-append">
                           </span>
                           <div class="col-xl-1 col-sm-2 mb-2">
@@ -33,7 +33,7 @@
       </div>
   </div> 
 
-    <div *ngIf="celulas.length > 0" clas="container">
+    <div *ngIf="_filterRows.length > 0" clas="container">
         <div class="table-responsive mt-3 m-3">
           <table class="table table-bordere shadow mb-5 f border border-top-0">
             <thead>
@@ -61,7 +61,7 @@
         </div>
       </div>
   
-      <div *ngIf="celulas.length == 0" clas="container">
+      <div *ngIf="_filterRows.length == 0" clas="container">
         <div class="table-responsive mt-3 m-3">
           <h4>No hay datos para mostrar </h4>
         </div>

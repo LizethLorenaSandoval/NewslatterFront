@@ -16,16 +16,13 @@ export class HomeComponent {
 	notas: any = [];
 	celulas: any = [];
 	estadoNota: any = [];
-	rows: any = [];
-	// Variables para el buscador
-	listFiltered = [];
-  	//searchTerm$ = new Subject<string>();
-
+	busqueda: any = [] = [];
+	_filterRows: any = [];
 
 	ngOnInit(){
-		this.getEstadoNota();
-		this.getCelulas();
-		this.getNotas();
+	this.getEstadoNota();
+	this.getCelulas();
+	this.getNotas();
 	}
 
 
@@ -49,34 +46,50 @@ export class HomeComponent {
 	// Servicios de notas
 	getNotas(){
 		this.notasService.getNotas().subscribe((res) =>{
-				this.notas = res;
-				console.log(this.notas);
+			this.notas = res;
+			console.log(this.notas);
+
+			this._filterRows = res;
 		})
 	}
 
 	// Servicios de celulas
 	getCelulas(){
 		this.celulasService.getCelulas().subscribe((res) =>{
-				this.celulas = res;
-				console.log(this.celulas);
+			this.celulas = res;
+			console.log(this.celulas);
 		})
 	}
 
 	// Servicios de estado notas
 	getEstadoNota(){
 		this.EstadoNotaService.getEstadoNota().subscribe((res) =>{
-				this.estadoNota = res;
-				console.log(this.estadoNota);
+			this.estadoNota = res;
+			console.log(this.estadoNota);
 		})
 	}
 
-	//Buscador
-	// filterList(): void {
-	// 	this.searchTerm$.subscribe(term => {
-	// 	  this.listFiltered = this.products
-	// 		.filter(item => item.nombre.toLowerCase().indexOf(term.toLowerCase()) >= 0);
-	// 	});
-	//   }
-	// }
+	// Get y Set del buscador
+	get filterRows(): any {
+		return this._filterRows;
+	}
+	
+	set filterRows(value) {
+		this._filterRows = value;
+	}
+
+	filtrarNotas(busqueda:any) {
+		const filterData = this.notas.filter((notas:any) =>
+		  notas.usuario.toLowerCase().includes(this.busqueda.toLowerCase()) ||
+		  notas.nombre_celula.toLowerCase().includes(this.busqueda.toLowerCase()) ||
+		  notas.id_nota.toString().toLowerCase().includes(this.busqueda.toLowerCase()) ||
+		  notas.titulo.toLowerCase().includes(this.busqueda.toLowerCase()) ||
+		  notas.descripcion.toLowerCase().includes(this.busqueda.toLowerCase()) ||
+		  notas.hora_fecha.toLowerCase().includes(this.busqueda.toLowerCase())
+		  )
+	
+		  this.filterRows = filterData;
+		  console.log("filterData ->",filterData);
+	  }
 
 }

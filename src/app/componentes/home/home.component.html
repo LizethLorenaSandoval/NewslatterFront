@@ -17,7 +17,7 @@
                 <div class="col-xl-12 col-sm-12 mb-2">
                     <div class="mx-auto">
                         <div class="input-group">
-                            <input placeholder="Busca una letter aquí" class="form-control border-end-0 border rounded-pill m-2" type="search" id="example-search-input">
+                            <input [(ngModel)]="busqueda" (keyup)="filtrarNotas(busqueda)" placeholder="Busca una letter aquí" class="form-control border-end-0 border rounded-pill m-2" type="search" id="example-search-input">
                             <span class="input-group-append">
                                 <button class="btn btn-outline-secondary bg-white border-bottom-0 border rounded-pill ms-n5 mt-2" type="button">
                                     <i class="fa fa-search"></i>
@@ -36,14 +36,19 @@
         </div>
     </div>          
     
-
+    
+    <div *ngIf="_filterRows.length == 0" clas="container">
+        <div class="table-responsive mt-3 m-3">
+          <h4>No hay datos para mostrar </h4>
+        </div>
+    </div>
 
     <div class="row m-3">
         
         <div class="d-flex">
         
             <div class="m-3  col-xl-8 col-sm-8 ">
-               <div class="shadow mb-5 f border border-top-0" *ngFor="let notas of notas">
+               <div class="shadow mb-5 f border border-top-0" *ngFor="let notas of _filterRows">
                 <div class="row m-1">
                     <div class="row col-12">
                         <div class="form-group d-flex justify-content-end">
@@ -91,10 +96,9 @@
                 </ul>
             </div>   
         </div>
-    </div>
-    
+    </div>   
 
-    <!-- MODALES -->
+<!-- MODALES -->
 
 <!-- Modal de crear -->
 

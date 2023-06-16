@@ -53,7 +53,7 @@ export class AdminCelulasComponent {
   }
 
 
-  filtrarUsuario(busqueda:any) {
+  filtrarCelula(busqueda:any) {
     const filterData = this.celulas.filter((celulas:any) =>
       celulas.id_celula.toString().toLowerCase().includes(this.busqueda.toLowerCase()) ||
       celulas.nombre_celula.toLowerCase().includes(this.busqueda.toLowerCase()))

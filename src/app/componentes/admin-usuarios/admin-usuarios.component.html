@@ -34,7 +34,7 @@
       </div>
   </div> 
   
-    <div *ngIf="usuarios.length > 0" clas="container">
+    <div *ngIf="_filterRows.length > 0" clas="container">
       <div class="table-responsive mt-3 m-3">
         <table class="table table-bordere shadow mb-5 f border border-top-0">
           <thead>
@@ -72,7 +72,7 @@
       </div>
     </div>
 
-    <div *ngIf="usuarios.length == 0" clas="container">
+    <div *ngIf="_filterRows.length == 0" clas="container">
       <div class="table-responsive mt-3 m-3">
         <h4>No hay datos para mostrar </h4>
       </div>
