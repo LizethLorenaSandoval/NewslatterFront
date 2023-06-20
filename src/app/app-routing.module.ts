@@ -14,6 +14,7 @@ import { NavAdminIndexComponent } from './componentes/nav-admin-index/nav-admin-
 import { AdminUsuariosComponent } from './componentes/admin-usuarios/admin-usuarios.component';
 import { AdminRolComponent } from './componentes/admin-rol/admin-rol.component';
 import { AdminCelulasComponent } from './componentes/admin-celulas/admin-celulas.component';
+import { AdminTipoDocumentoComponent } from './componentes/admin-tipo-documento/admin-tipo-documento.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'login', pathMatch: 'full'},
@@ -30,6 +31,7 @@ const routes: Routes = [
   {path: 'admin-usuarios', component: AdminUsuariosComponent },
   {path: 'admin-rol', component: AdminRolComponent},
   {path: 'admin-celulas', component: AdminCelulasComponent},
+  {path: 'admin-tipo_documento', component: AdminTipoDocumentoComponent},
   {path: '**', redirectTo: 'not-found'},
   
 ];

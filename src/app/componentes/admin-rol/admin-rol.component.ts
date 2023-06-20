@@ -55,9 +55,7 @@ export class AdminRolComponent {
 
     const filterData = this.rol.filter((rol:any)=>
       rol.id_rol.toString().toLowerCase().includes(this.busqueda.toLowerCase()) ||
-      rol.nombre_rol.toLowerCase().includes(this.busqueda.toLowerCase()) ||
-      rol.nombre_estado_rol.toLowerCase().includes(this.busqueda.toLowerCase())
-    )
+      rol.nombre_rol.toLowerCase().includes(this.busqueda.toLowerCase()))
 
     this.filterRows = filterData;
     console.log("filterData ->",filterData);
