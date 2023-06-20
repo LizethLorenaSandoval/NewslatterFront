@@ -76,11 +76,10 @@
                 <div class="row m-1">
                     <div class="row col-12">
                         <div class="form-group d-flex justify-content-end">
-                            <i class="fa-regular fa-heart fa-xl m-2"></i> <p class="mt-2 me-2">{{notas.likes_total}}</p>
-                            <!-- <i class="fa-solid fa-heart fa-xl"></i> -->
-                            <i class="fa-solid fa-comment fa-xl m-2"></i> <p class="mt-2 me-2">{{notas.comentarios_total}}</p>
-                            <i class="fa-solid fa-pen-to-square fa-xl m-2"></i>
-                            <i class="fa-solid fa-trash fa-xl m-2"></i>
+                            <button class="btn btn-icon btn-sm" (click)="open(content)"><i class="fa-regular fa-heart fa-xl me-4"></i> <label for="m-auto">{{notas.likes_total}}</label></button>
+                            <button class="btn btn-icon btn-sm" (click)="open(content)"><i class="fa-solid fa-comment fa-xl me-4"></i> <label for="m-auto">{{notas.comentarios_total}}</label></button>
+                            <button class="btn btn-icon btn-sm" (click)="open(content)"><i class="fa-solid fa-pen-to-square fa-xl m-2"></i></button>
+                            <button class="btn btn-icon btn-sm" (click)="open(content)"><i class="fa-solid fa-trash fa-xl m-2"></i></button>
                         </div>
                     </div>
                 </div>

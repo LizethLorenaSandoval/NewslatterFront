@@ -50,8 +50,8 @@
               <td>{{rol.nombre_rol | titlecase}}</td>
               <td>{{rol.nombre_estado_rol | titlecase}}</td>
               <td>
-                <i class="m-2 fa-solid fa-pen-to-square"></i>
-                <i class="m-2 fa-solid fa-trash"></i>
+                <button class="btn btn-icon btn-sm" (click)="open(content)"><i class="m-2 fa-solid fa-pen-to-square"></i></button>
+                <button class="btn btn-icon btn-sm" (click)="open(content)"><i class="m-2 fa-solid fa-trash"></i></button>              
               </td>
             </tr>
           </tbody>
