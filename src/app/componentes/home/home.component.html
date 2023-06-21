@@ -76,8 +76,13 @@
                 <div class="row m-1">
                     <div class="row col-12">
                         <div class="form-group d-flex justify-content-end">
-                            <button class="btn btn-icon btn-sm" (click)="open(content)"><i class="fa-regular fa-heart fa-xl me-4"></i> <label for="m-auto">{{notas.likes_total}}</label></button>
-                            <button class="btn btn-icon btn-sm" (click)="open(content)"><i class="fa-solid fa-comment fa-xl me-4"></i> <label for="m-auto">{{notas.comentarios_total}}</label></button>
+                            <!-- <button *ngIf heart = false class="btn btn-icon btn-sm" (click)="like(heart)"><i class="fa-regular fa-heart fa-xl me-4"></i><label for="m-auto">{{notas.likes_total}}</label></button>
+                            <button *ngIf heart = true class="btn btn-icon btn-sm" (click)="like(heart)"><i class="fa-solid fa-heart"></i><label for="m-auto">{{notas.likes_total}}</label></button> -->
+                            <button *ngIf="heart == true " class="btn btn-icon btn-sm" (click)="like(heart)"><i class="fa-regular fa-heart fa-xl me-4"></i> <label for="m-auto">{{notas.likes_total}}</label></button>
+                            <button *ngIf="heart == false " class="btn btn-icon btn-sm" (click)="like(heart)"><i class="fa-solid fa-heart fa-xl me-4"></i> <label for="m-auto">{{notas.likes_total}}</label></button>
+                            
+                            <!-- <i class="fa-solid fa-heart"></i> -->
+                            <button class="btn btn-icon btn-sm" (click)="open(coments)"><i class="fa-solid fa-comment fa-xl me-4"></i> <label for="m-auto">{{notas.comentarios_total}}</label></button>
                             <button class="btn btn-icon btn-sm" (click)="open(content)"><i class="fa-solid fa-pen-to-square fa-xl m-2"></i></button>
                             <button class="btn btn-icon btn-sm" (click)="open(content)"><i class="fa-solid fa-trash fa-xl m-2"></i></button>
                         </div>
@@ -98,6 +103,33 @@
     </div>   
 
 <!-- MODALES -->
+
+<!-- Modal de comentarios -->
+<ng-template #coments let-c="close" let-d="dismiss">
+    <div class="modal-header">
+		<h4 class="modal-title" id="modal-basic-title">Comentarios</h4>
+		<button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
+	</div>
+
+    <div class="modal-body">
+
+        <form action class="example-form">
+
+            <div class="input-group">
+                              
+                <textarea class="form-control" aria-label="With textarea"></textarea>
+                <button class="btn btn-icon btn-sm" (click)="d('Cross click')"><i class="fa-solid fa-gifts"></i></button>
+                <button class="btn btn-icon btn-sm" (click)="d('Cross click')"><i class="fa-regular fa-face-smile"></i></button>
+                <button class="btn btn-icon btn-sm" (click)="d('Cross click')"><i class="fa-solid fa-location-arrow"></i></button>
+
+            </div>
+
+            
+        </form>
+    </div>
+
+</ng-template>
+
 
 <!-- Modal de crear -->
 

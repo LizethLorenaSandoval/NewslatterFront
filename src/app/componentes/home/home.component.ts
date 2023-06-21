@@ -18,6 +18,7 @@ export class HomeComponent {
 	estadoNota: any = [];
 	busqueda: any = [] = [];
 	_filterRows: any = [];
+	heart: any = false;
 
 	ngOnInit(){
 	this.getEstadoNota();
@@ -59,6 +60,17 @@ export class HomeComponent {
 			this.celulas = res;
 			console.log(this.celulas);
 		})
+	}
+
+	like(heart:any){
+
+		if (this.heart == true){
+			this.heart = false;
+		}else if (this.heart == false) {
+			this.heart = true;
+		}
+		console.log(heart);
+		
 	}
 
 	// Servicios de estado notas
