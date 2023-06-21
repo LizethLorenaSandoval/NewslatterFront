@@ -41,6 +41,7 @@
               <th scope="col">Id</th>
               <th scope="col">Rol</th>
               <th scope="col">Estado</th>
+              <th scope="col">Cambiar estado</th>
               <th scope="col">Acciones</th>
             </tr>
           </thead>
@@ -49,6 +50,11 @@
               <td>{{rol.id_rol}}</td>
               <td>{{rol.nombre_rol | titlecase}}</td>
               <td>{{rol.nombre_estado_rol | titlecase}}</td>
+              <td>
+                <div class="form-check form-switch">
+                  <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked>
+                </div>
+              </td> 
               <td>
                 <button class="btn btn-icon btn-sm" (click)="open(content)"><i class="m-2 fa-solid fa-pen-to-square"></i></button>
                 <button class="btn btn-icon btn-sm" (click)="open(content)"><i class="m-2 fa-solid fa-trash"></i></button>              
