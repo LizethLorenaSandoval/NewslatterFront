@@ -203,8 +203,9 @@
 
             <div class="mb-3 form-group col-6">
               <label for="email" class="col-form-label">Célula</label>
-              <select class="form-select" aria-label="Default select example" [(ngModel)]="celulas.id_celula" formControlName="id_celula">
-                <option          
+              <select class="form-select" aria-label="Default select example" [(ngModel)]="celulaXdefecto" formControlName="id_celula">
+                <option
+                  aria-placeholder="Selecciona una célula"      
                   *ngFor="let celulas of celulas"
                   value="{{ celulas.id_celula }}"
                 >
@@ -215,8 +216,9 @@
 
             <div class="mb-3 form-group col-6">
               <label for="email" class="col-form-label">Estado nota</label>
-              <select class="form-select" aria-label="Default select example" [(ngModel)]="estadoNota.id_estado_nota" formControlName="id_estado_nota">
+              <select class="form-select" aria-label="Default select example" [(ngModel)]="estadoXdefecto" formControlName="id_estado_nota">
                 <option
+                  aria-placeholder="Selecciona una prioridad para la nota"  
                   *ngFor="let estadoNota of estadoNota"
                   value="{{ estadoNota.id_estado_nota }}"
                    >

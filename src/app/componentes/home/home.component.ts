@@ -23,7 +23,9 @@ export class HomeComponent {
 	crear_nota: any = [];
 	notas: any = [];
 	celulas: any = [];
+	celulaXdefecto: any = 1;
 	estadoNota: any = [];
+	estadoXdefecto: any = 1;
 	busqueda: any = [] = [];
 	_filterRows: any = [];
 	heart: any = false;
