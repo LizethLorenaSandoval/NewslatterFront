@@ -3,6 +3,13 @@ import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 import { NotasService } from 'src/app/servicios/notas/notas.service';
 import { CelulasService } from 'src/app/servicios/celulas/celulas.service';
 import { EstadoNotaService } from 'src/app/servicios/estado_nota/estado-nota.service';
+import {
+	UntypedFormBuilder,
+	UntypedFormControl,
+	UntypedFormGroup,
+	Validators,
+  } from "@angular/forms";
+import { of } from "rxjs";
 
 @Component({
   selector: 'app-home',
@@ -34,7 +41,8 @@ export class HomeComponent {
 	private modalService: NgbModal,
 	private notasService: NotasService,
 	private celulasService: CelulasService,
-	private EstadoNotaService: EstadoNotaService
+	private EstadoNotaService: EstadoNotaService,
+	private fb: UntypedFormBuilder
 	) {
 		// customize default values of modals used by this component tree
 		config.backdrop = 'static';
@@ -44,6 +52,37 @@ export class HomeComponent {
 	open(content: any) { //el size es opcional, para el tamaño de la modal
 		this.modalService.open(content, { size: 'lg' });
 	}
+
+	public notaForm: UntypedFormGroup = this.fb.group({ // validators del form de crear
+		titulo: [
+		  "",
+		  [Validators.required, Validators.minLength(3), Validators.maxLength(70)],
+		],
+		id_usuario: [
+			"",
+			[Validators.required],
+		  ],
+		id_celula: [
+		  "",
+		  [Validators.required],
+		],
+		id_estado_nota: [
+		  "",
+		  [Validators.required],
+		],
+		descripcion: [
+		  "",
+		  [Validators.required, Validators.minLength(3), Validators.maxLength(1000)],
+		],
+	  });
+
+	  validField(field: string) { // validators del form de crear
+		return (
+		  this.notaForm.controls[field].errors &&
+		  this.notaForm.controls[field].touched
+		);
+	  }
+	
 
 	// Servicios de notas
 	getNotas(){
@@ -55,14 +94,28 @@ export class HomeComponent {
 		})
 	}
 
+	createNota(){
+		this.crear_nota = {
+			titulo: this.notaForm.value.titulo,
+			id_usuario: 6,
+			id_celula: this.notaForm.value.id_celula,
+			id_estado_nota: this.notaForm.value.id_estado_nota,
+			descripcion: this.notaForm.value.descripcion,
+		};
+
+		console.log("Objeto ->",this.crear_nota);
+		
+	}
+
 	// Servicios de celulas
-	getCelulas(){
+	async getCelulas(){
 		this.celulasService.getCelulas().subscribe((res) =>{
 			this.celulas = res;
 			console.log(this.celulas);
 		})
 	}
 
+	// Cambia el icono: <3
 	like(heart:any){
 
 		if (this.heart == true){
@@ -90,6 +143,8 @@ export class HomeComponent {
 	set filterRows(value) {
 		this._filterRows = value;
 	}
+
+	// Función para buscar notas
 
 	filtrarNotas(busqueda:any) {
 		const filterData = this.notas.filter((notas:any) =>

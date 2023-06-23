@@ -1,180 +1,254 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home</title>
-</head>
-<body>
+  </head>
+  <body>
     <app-nav></app-nav>
 
     <div class="container">
-        <div class="row">
-          <div class="col-lg-12">
-            <div class="row d-flex">
-        
-                <div class="col-xl-12 col-sm-12 mb-2">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="row d-flex">
+            <div class="col-xl-12 col-sm-12 mb-2">
+              <div class="mx-auto">
+                <div class="input-group">
+                  <input
+                    [(ngModel)]="busqueda"
+                    (keyup)="filtrarNotas(busqueda)"
+                    placeholder="Busca una letter aquí"
+                    class="form-control border-end-0 border rounded-pill m-2"
+                    type="search"
+                    id="example-search-input"
+                  />
+                  <span class="input-group-append">
+                    <button
+                      class="btn btn-outline-secondary bg-white border-bottom-0 border rounded-pill ms-n5 mt-2"
+                      type="button"
+                    >
+                      <i class="fa fa-search"></i>
+                    </button>
+                  </span>
+                  <div class="col-xl-1 col-sm-2 mb-2">
                     <div class="mx-auto">
-                        <div class="input-group">
-                            <input [(ngModel)]="busqueda" (keyup)="filtrarNotas(busqueda)" placeholder="Busca una letter aquí" class="form-control border-end-0 border rounded-pill m-2" type="search" id="example-search-input">
-                            <span class="input-group-append">
-                                <button class="btn btn-outline-secondary bg-white border-bottom-0 border rounded-pill ms-n5 mt-2" type="button">
-                                    <i class="fa fa-search"></i>
-                                </button>
-                            </span>
-                            <div class="col-xl-1 col-sm-2 mb-2">
-                                <div class="mx-auto">
-                                    <button (click)="open(content)" type="button" class="btn btn-outline-success m-2">Crear</button>
-                                </div>
-                              </div>
-                        </div>
+                      <button
+                        (click)="open(content)"
+                        type="button"
+                        class="btn btn-outline-success m-2"
+                      >
+                        Crear
+                      </button>
                     </div>
+                  </div>
                 </div>
+              </div>
             </div>
           </div>
         </div>
-    </div>          
-    
-    
+      </div>
+    </div>
+
     <div *ngIf="_filterRows.length == 0" clas="container">
-        <div class="table-responsive mt-3 m-3">
-          <h4>No hay datos para mostrar </h4>
-        </div>
+      <div class="table-responsive mt-3 m-3">
+        <h4>No hay datos para mostrar</h4>
+      </div>
     </div>
 
     <div class="row m-3">
-        
-        <div class="d-flex">
-        
-            <div class="m-3  col-xl-8 col-sm-8 ">
-               <div class="shadow mb-5 f border border-top-0" *ngFor="let notas of _filterRows">
-                <div class="row m-1">
-                    <div class="row col-12">
-                        <div class="form-group d-flex justify-content-end">
-                            <i class="m-1 fa-solid fa-user"></i> 
-                            <p>{{notas.usuario}} , {{notas.nombre_celula | lowercase}} , {{notas.hora_fecha | date:'medium'}} </p>
-                            <div class="mt-1 ms-3" *ngIf="notas.id_nota != 1">
-                                <i class="fa-solid fa-flag fa-xl" style="color: #ff0000;"></i>
-                            </div>
-                            
-                        </div>
-                    </div>
+      <div class="d-flex">
+        <div class="m-3 col-xl-8 col-sm-8">
+          <div
+            class="shadow mb-5 f border border-top-0"
+            *ngFor="let notas of _filterRows"
+          >
+            <div class="row m-1">
+              <div class="row col-12">
+                <div class="form-group d-flex justify-content-end">
+                  <i class="m-1 fa-solid fa-user"></i>
+                  <p>
+                    {{ notas.usuario }} ,
+                    {{ notas.nombre_celula | lowercase }} ,
+                    {{ notas.hora_fecha | date : "medium" }}
+                  </p>
+                  <div class="mt-1 ms-3" *ngIf="notas.id_nota != 1">
+                    <i
+                      class="fa-solid fa-flag fa-xl"
+                      style="color: #ff0000"
+                    ></i>
+                  </div>
                 </div>
-
-                <h4 class="text-center m-1 p-2">{{notas.titulo}}</h4>
-
-                <div class="row m-1">
-                    <div class="row col-12">
-                        <div class="form-group d-flex justify-content-center p-2">
-                            <p>{{notas.descripcion}}</p>
-                        </div>
-                    </div>
-                </div>
-
-
-                <div class="row m-1">
-                    <div class="row col-12">
-                        <div class="form-group d-flex justify-content-end">
-                            <!-- <button *ngIf heart = false class="btn btn-icon btn-sm" (click)="like(heart)"><i class="fa-regular fa-heart fa-xl me-4"></i><label for="m-auto">{{notas.likes_total}}</label></button>
-                            <button *ngIf heart = true class="btn btn-icon btn-sm" (click)="like(heart)"><i class="fa-solid fa-heart"></i><label for="m-auto">{{notas.likes_total}}</label></button> -->
-                            <button *ngIf="heart == true " class="btn btn-icon btn-sm" (click)="like(heart)"><i class="fa-regular fa-heart fa-xl me-4"></i> <label for="m-auto">{{notas.likes_total}}</label></button>
-                            <button *ngIf="heart == false " class="btn btn-icon btn-sm" (click)="like(heart)"><i class="fa-solid fa-heart fa-xl me-4"></i> <label for="m-auto">{{notas.likes_total}}</label></button>
-                            
-                            <!-- <i class="fa-solid fa-heart"></i> -->
-                            <button class="btn btn-icon btn-sm" (click)="open(coments)"><i class="fa-solid fa-comment fa-xl me-4"></i> <label for="m-auto">{{notas.comentarios_total}}</label></button>
-                            <button class="btn btn-icon btn-sm" (click)="open(content)"><i class="fa-solid fa-pen-to-square fa-xl m-2"></i></button>
-                            <button class="btn btn-icon btn-sm" (click)="open(content)"><i class="fa-solid fa-trash fa-xl m-2"></i></button>
-                        </div>
-                    </div>
-                </div>
-               </div>
-            </div>   
-            
-    
-            <div class="ms-5 mt-3 mb-5 shadow col-xl-3 d-none d-sm-block f border border-top-0">
-                <h4 class="text-center m-1">Celulas</h4>
-                <ul class="list-group list-group-flush" >
-                    <li *ngFor="let celulas of celulas" class="list-group-item">{{celulas.nombre_celula | titlecase}}</li>
-                    
-                </ul>
-            </div>   
-        </div>
-    </div>   
-
-<!-- MODALES -->
-
-<!-- Modal de comentarios -->
-<ng-template #coments let-c="close" let-d="dismiss">
-    <div class="modal-header">
-		<h4 class="modal-title" id="modal-basic-title">Comentarios</h4>
-		<button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
-	</div>
-
-    <div class="modal-body">
-
-        <form action class="example-form">
-
-            <div class="input-group">
-                              
-                <textarea class="form-control" aria-label="With textarea"></textarea>
-                <button class="btn btn-icon btn-sm" (click)="d('Cross click')"><i class="fa-solid fa-gifts"></i></button>
-                <button class="btn btn-icon btn-sm" (click)="d('Cross click')"><i class="fa-regular fa-face-smile"></i></button>
-                <button class="btn btn-icon btn-sm" (click)="d('Cross click')"><i class="fa-solid fa-location-arrow"></i></button>
-
+              </div>
             </div>
 
-            
-        </form>
+            <h4 class="text-center m-1 p-2">{{ notas.titulo }}</h4>
+
+            <div class="row m-1">
+              <div class="row col-12">
+                <div class="form-group d-flex justify-content-center p-2">
+                  <p>{{ notas.descripcion }}</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="row m-1">
+              <div class="row col-12">
+                <div class="form-group d-flex justify-content-end">
+                  <!-- <button *ngIf heart = false class="btn btn-icon btn-sm" (click)="like(heart)"><i class="fa-regular fa-heart fa-xl me-4"></i><label for="m-auto">{{notas.likes_total}}</label></button>
+                            <button *ngIf heart = true class="btn btn-icon btn-sm" (click)="like(heart)"><i class="fa-solid fa-heart"></i><label for="m-auto">{{notas.likes_total}}</label></button> -->
+                  <button
+                    *ngIf="heart == true"
+                    class="btn btn-icon btn-sm"
+                    (click)="like(heart)"
+                  >
+                    <i class="fa-regular fa-heart fa-xl me-4"></i>
+                    <label for="m-auto">{{ notas.likes_total }}</label>
+                  </button>
+                  <button
+                    *ngIf="heart == false"
+                    class="btn btn-icon btn-sm"
+                    (click)="like(heart)"
+                  >
+                    <i class="fa-solid fa-heart fa-xl me-4"></i>
+                    <label for="m-auto">{{ notas.likes_total }}</label>
+                  </button>
+
+                  <!-- <i class="fa-solid fa-heart"></i> -->
+                  <button class="btn btn-icon btn-sm" (click)="open(coments)">
+                    <i class="fa-solid fa-comment fa-xl me-4"></i>
+                    <label for="m-auto">{{ notas.comentarios_total }}</label>
+                  </button>
+                  <button class="btn btn-icon btn-sm" (click)="open(content)">
+                    <i class="fa-solid fa-pen-to-square fa-xl m-2"></i>
+                  </button>
+                  <button class="btn btn-icon btn-sm" (click)="open(content)">
+                    <i class="fa-solid fa-trash fa-xl m-2"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="ms-5 mt-3 mb-5 shadow col-xl-3 d-none d-sm-block f border border-top-0"
+        >
+          <h4 class="text-center m-1">Celulas</h4>
+          <ul class="list-group list-group-flush">
+            <li *ngFor="let celulas of celulas" class="list-group-item">
+              {{ celulas.nombre_celula | titlecase }}
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
 
-</ng-template>
+    <!-- MODALES -->
 
+    <!-- Modal de comentarios -->
+    <ng-template #coments let-c="close" let-d="dismiss">
+      <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Comentarios</h4>
+        <button
+          type="button"
+          class="btn-close"
+          aria-label="Close"
+          (click)="d('Cross click')"
+        ></button>
+      </div>
 
-<!-- Modal de crear -->
+      <div class="modal-body">
+        <form action class="example-form">
+          <div class="input-group">
+            <textarea
+              class="form-control"
+              aria-label="With textarea"
+            ></textarea>
+            <button class="btn btn-icon btn-sm" (click)="d('Cross click')">
+              <i class="fa-solid fa-gifts"></i>
+            </button>
+            <button class="btn btn-icon btn-sm" (click)="d('Cross click')">
+              <i class="fa-regular fa-face-smile"></i>
+            </button>
+            <button class="btn btn-icon btn-sm" (click)="d('Cross click')">
+              <i class="fa-solid fa-location-arrow"></i>
+            </button>
+          </div>
+        </form>
+      </div>
+    </ng-template>
 
-<ng-template #content let-c="close" let-d="dismiss">
-	<div class="modal-header">
-		<h4 class="modal-title" id="modal-basic-title">Crear letter</h4>
-		<button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
-	</div>
-	<div class="modal-body">
-		<form action class="example-form">
-            
-            <div class="row">
-                <div class="mb-3 form-group col-12">
-                    <label for="email" class="col-form-label">Titulo</label>
-                    
-                    <input 
-                    type="text"
-                    class="form-control"
-                    id="exampleFormControlInput1"/>
-                </div>
+    <!-- Modal de crear -->
 
-                <div class="mb-3 form-group col-6">
-                    <select class="form-select" aria-label="Default select example">
-                    <option *ngFor="let celulas of celulas" value="{{celulas.id_celula}}">{{celulas.nombre_celula | titlecase}}</option>
-                    </select>
-                </div>
+    <ng-template #content let-c="close" let-d="dismiss">
+      <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Crear letter</h4>
+        <button
+          type="button"
+          class="btn-close"
+          aria-label="Close"
+          (click)="d('Cross click')"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="notaForm" action class="example-form">
+          <div class="row">
+            <div class="mb-3 form-group col-12">
+              <label for="email" class="col-form-label">Titulo</label>
+              <input [(ngModel)]="crear_nota.titulo" formControlName="titulo" type="text" class="form-control" id="titulo" />
+              <span class="text-danger" *ngIf="validField('titulo')">Este campo es requerido</span>
+            </div>
 
-                <div class="mb-3 form-group col-6">
-                    <select class="form-select" aria-label="Default select example">
-                    <option *ngFor="let estadoNota of estadoNota" value="{{estadoNota.id_estado_nota}}">{{estadoNota.nombre_estado_nota | titlecase}}</option>   
-                    </select>
-                </div>
+            <div class="mb-3 form-group col-6">
+              <label for="email" class="col-form-label">Célula</label>
+              <select class="form-select" aria-label="Default select example" [(ngModel)]="celulas.id_celula" formControlName="id_celula">
+                <option          
+                  *ngFor="let celulas of celulas"
+                  value="{{ celulas.id_celula }}"
+                >
+                  {{ celulas.nombre_celula | titlecase }}
+                </option>
+              </select>
+            </div>
 
-                <div class="mb-3 form-group col-12">
-                    <label for="exampleFormControlTextarea1" class="form-label">Descripción</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="5"></textarea>
-                </div>
+            <div class="mb-3 form-group col-6">
+              <label for="email" class="col-form-label">Estado nota</label>
+              <select class="form-select" aria-label="Default select example" [(ngModel)]="estadoNota.id_estado_nota" formControlName="id_estado_nota">
+                <option
+                  *ngFor="let estadoNota of estadoNota"
+                  value="{{ estadoNota.id_estado_nota }}"
+                   >
+                  {{ estadoNota.nombre_estado_nota | titlecase }}
+                </option>
+              </select>
+            </div>
 
-            </div>  
-
-          </form>
-	</div>
-	<div class="modal-footer">
-		<button type="button" class="btn btn-outline-dark" (click)="c('Save click')">Crear letter</button>
-	</div>
-</ng-template>
-</body>
+            <div class="mb-3 form-group col-12">
+              <label for="exampleFormControlTextarea1" class="form-label"
+                >Descripción</label
+              >
+              <textarea
+              [(ngModel)]="crear_nota.descripcion" formControlName="descripcion"
+                class="form-control"
+                id="exampleFormControlTextarea1"
+                rows="5"
+              ></textarea>
+              <span class="text-danger" *ngIf="validField('descripcion')">Este campo es requerido</span>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-outline-dark"
+          (click)="createNota()"
+        >
+          Crear letter
+        </button>
+      </div>
+    </ng-template>
+  </body>
 </html>
