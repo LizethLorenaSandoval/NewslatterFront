@@ -117,9 +117,9 @@ export class HomeComponent {
               showConfirmButton: false,
               timer: 1000,
             });
-            //   this.getNotas();
-            //   this.modalService.dismissAll();
-            //   this.notaForm.reset();
+              this.getNotas();
+              this.modalService.dismissAll();
+              this.notaForm.reset();
           } else {
             Swal.fire({
               position: 'center',
@@ -128,7 +128,7 @@ export class HomeComponent {
               showConfirmButton: true,
               confirmButtonText: 'Ok',
             });
-            //   this.notaForm.reset();
+              this.notaForm.reset();
           }
         },
         (err) => console.log(err)

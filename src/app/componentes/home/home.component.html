@@ -246,6 +246,7 @@
         <button
           type="button"
           class="btn btn-outline-dark"
+          [disabled]="!validField"
           (click)="createNota()"
         >
           Crear letter
