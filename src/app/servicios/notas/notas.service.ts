@@ -17,7 +17,7 @@ export class NotasService {
     return this.http.get(`${this.API_URL}/nota`)
   }
 
-  createNota(nota:any){ // Se le pasa un objeto que toma como body en postman para crear el registro
-    return this.http.post(`${this.API_URL}/crear_nota`,nota)
+  createNota(body:any){ // Se le pasa un objeto que toma como body en postman para crear el registro
+    return this.http.post(`${this.API_URL}/crear_nota`,body)
   }
 }

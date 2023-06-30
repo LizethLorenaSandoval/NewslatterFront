@@ -216,11 +216,11 @@
 
             <div class="mb-3 form-group col-6">
               <label for="email" class="col-form-label">Estado nota</label>
-              <select class="form-select" aria-label="Default select example" [(ngModel)]="estadoXdefecto" formControlName="id_estado_nota">
+              <select class="form-select" aria-label="Default select example" [(ngModel)]="estadoXdefecto" formControlName="estado_nota">
                 <option
                   aria-placeholder="Selecciona una prioridad para la nota"  
                   *ngFor="let estadoNota of estadoNota"
-                  value="{{ estadoNota.id_estado_nota }}"
+                  value="{{ estadoNota.estado_nota }}"
                    >
                   {{ estadoNota.nombre_estado_nota | titlecase }}
                 </option>
