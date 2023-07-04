@@ -82,24 +82,26 @@
 		<button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
 	</div>
 	<div class="modal-body">
-		<form action class="example-form">
+		<form [formGroup]="celulaForm" action class="example-form">
             
             <div class="row">
                 <div class="mb-3 form-group col-12">
                   <label for="exampleInputEmail1" class="form-label">Nombre de la célula</label>
                     
                     <input 
+                    [(ngModel)]="celulas.nombre_celula" formControlName="nombre_celula"
                     type="text"
                     class="form-control"
                     id="exampleFormControlInput1"
                     placeholder="Pensiones Voluntarias"/>
+                    <span class="text-danger" *ngIf="validField('nombre_celula')">Este campo es requerido</span>
                 </div>
             </div>    
 
     </form>
 	</div>
 	<div class="modal-footer">
-		<button type="button" class="btn btn-outline-dark" >Crear célula</button>
+		<button type="button" class="btn btn-outline-dark" (click)="createCelula()">Crear célula</button>
 	</div>
 </ng-template>
     

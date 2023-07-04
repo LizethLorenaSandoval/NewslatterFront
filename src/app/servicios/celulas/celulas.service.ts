@@ -16,4 +16,8 @@ export class CelulasService {
   getCelulas(){
     return this.http.get(`${this.API_URL}/celula`)
   }
+
+  createCelula(body:any){ // Se le pasa un objeto que toma como body en postman para crear el registro
+    return this.http.post(`${this.API_URL}/crear_celula`,body)
+  }
 }
