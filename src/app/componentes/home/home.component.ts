@@ -106,7 +106,7 @@ export class HomeComponent {
     try {
       this.notasService.createNota(this.crear_nota).subscribe(
         (res: any) => {
-          console.log('res ->', res);
+          // console.log('res ->', res);
 
           if (this.crear_nota) {
             Swal.fire({

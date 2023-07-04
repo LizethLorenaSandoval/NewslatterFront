@@ -81,23 +81,25 @@
 		<button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
 	</div>
 	<div class="modal-body">
-		<form action class="example-form">
+		<form [formGroup]="rolForm" action class="example-form">
             
             <div class="row">
                 <div class="mb-3 form-group col-12">
                   <label for="exampleInputEmail1" class="form-label">Nombre del rol</label>
-                    
                     <input 
+                    [(ngModel)]="rol.nombre_rol" formControlName="nombre_rol"
                     type="text"
                     class="form-control"
                     id="exampleFormControlInput1"
                     placeholder="Administrador"/>
+                <span class="text-danger" *ngIf="validField('nombre_rol')">Este campo es requerido</span>
                 </div>
               </div>            
           </form>
 	</div>
 	<div class="modal-footer">
-		<button type="button" class="btn btn-outline-dark" >Crear rol</button>
+		<button type="button" class="btn btn-outline-dark" [disabled]="!validField"
+    (click)="createRol()" >Crear rol</button>
 	</div>
 </ng-template>
 
