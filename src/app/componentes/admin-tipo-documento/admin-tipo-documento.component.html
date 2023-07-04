@@ -94,17 +94,19 @@
         ></button>
       </div>
       <div class="modal-body">
-        <form action class="example-form">
+        <form [formGroup]="tipoDocForm" action class="example-form">
           <div class="row">
             <div class="mb-3 form-group col-6">
               <label for="exampleInputEmail1" class="form-label">Nombre</label>
 
               <input
+              [(ngModel)]="tipo_documento.nombre_tipo_documento" formControlName="nombre_tipo_documento"
                 type="text"
                 class="form-control"
                 id="exampleFormControlInput1"
                 placeholder="Registro civil de nacimiento"
               />
+              <span class="text-danger" *ngIf="validField('nombre_tipo_documento')">Este campo es requerido</span>
             </div>
 
             <div class="mb-3 form-group col-6">
@@ -113,17 +115,20 @@
               >
 
               <input
+                [(ngModel)]="tipo_documento.tipo_documento" formControlName="tipo_documento"
                 type="text"
                 class="form-control"
                 id="exampleFormControlInput1"
                 placeholder="RCN"
               />
+              <span class="text-danger" *ngIf="validField('tipo_documento')">Este campo es requerido</span>
             </div>
           </div>
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-outline-dark">
+        <button type="button" class="btn btn-outline-dark" [disabled]="!validField"
+        (click)="createTipoDoc()">
           Crear tipo de documento
         </button>
       </div>

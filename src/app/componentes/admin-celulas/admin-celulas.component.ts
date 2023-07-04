@@ -80,7 +80,7 @@ export class AdminCelulasComponent {
           Swal.fire({
             position: 'top-end',
             icon: 'success',
-            title: 'Nota creada',
+            title: 'Célula creada',
             text: 'Se ha creado la célula',
             showConfirmButton: false,
             timer: 1000,

@@ -81,7 +81,7 @@ export class AdminRolComponent {
             Swal.fire({
               position: 'top-end',
               icon: 'success',
-              title: 'Nota creada',
+              title: 'Rol creado',
               text: 'Se ha creado el rol',
               showConfirmButton: false,
               timer: 1000,
