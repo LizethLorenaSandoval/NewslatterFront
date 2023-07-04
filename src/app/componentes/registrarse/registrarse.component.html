@@ -20,7 +20,7 @@
           </div>
 
           <div class="col-md-12 col-lg-5 col-xl-5 offset-xl-1">
-            <form action class="example-form">
+            <form [formGroup]="registerForm" action class="example-form">
               <div class="col-12 text-center">
                 <h2>Registrate</h2>
               </div>
@@ -30,26 +30,28 @@
                   <label for="email" class="col-form-label">Nombre</label>
 
                   <input
+                  [(ngModel)]="crear_usuario.nombre" formControlName="nombre"
                     type="text"
                     class="form-control"
                     autofocus
                     id="nombre"
                     placeholder="Pepito"
                   />
-                  <!-- <span class="text-danger">Este campo es requerido</span> -->
+                  <span class="text-danger">Este campo es requerido</span>
                 </div>
 
                 <div class="mb-3 form-group col-6">
                   <label for="email" class="col-form-label">Apellido</label>
 
                   <input
+                  [(ngModel)]="crear_usuario.apellido" formControlName="apellido"
                     type="text"
                     class="form-control"
                     autofocus
                     id="apellido"
                     placeholder="Perez"
                   />
-                  <!-- <span class="text-danger">Este campo es requerido</span> -->
+                  <span class="text-danger">Este campo es requerido</span>
                 </div>
 
                 <div class="mb-3 form-group col-12" autofocus>
@@ -57,6 +59,7 @@
                     >Celula</label
                   >
                   <select
+                  [(ngModel)]="celulaXdefecto" formControlName="id_celula"
                     class="form-select"
                     aria-label="Default select example"
                   >
@@ -67,7 +70,7 @@
                       {{ celulas.nombre_celula | titlecase }}
                     </option>
                   </select>
-                  <!-- <span class="text-danger">Este campo es requerido</span> -->
+                  <span class="text-danger">Este campo es requerido</span>
                 </div>
 
                 <div class="mb-3 form-group col-12" autofocus>
@@ -78,6 +81,7 @@
                     >Tipo de documento</label
                   >
                   <select
+                  [(ngModel)]="tipoDocXdefecto" formControlName="id_tipo_documento"
                     class="form-select"
                     aria-label="Default select example"
                   >
@@ -88,7 +92,7 @@
                       {{ tipo_documento.nombre_tipo_documento }}
                     </option>
                   </select>
-                  <!-- <span class="text-danger">Este campo es requerido</span> -->
+                  <span class="text-danger">Este campo es requerido</span>
                 </div>
 
                 <div class="mb-3 form-group col-6">
@@ -97,43 +101,47 @@
                   >
 
                   <input
+                  [(ngModel)]="crear_usuario.documento" formControlName="documento"
                     type="number"
                     class="form-control"
                     autofocus
                     id="documento"
                   />
-                  <!-- <span class="text-danger">Este campo es requerido</span> -->
+                  <span class="text-danger">Este campo es requerido</span>
                 </div>
 
                 <div class="mb-3 form-group col-6">
                   <label for="email" class="col-form-label">Email</label>
 
                   <input
+                  [(ngModel)]="crear_usuario.correo" formControlName="correo"
                     type="email"
                     class="form-control"
                     autofocus
                     id="correo"
                     placeholder="Pepito@Perez.com"
                   />
-                  <!-- <span class="text-danger">Este campo es requerido</span> -->
+                  <span class="text-danger">Este campo es requerido</span>
                 </div>
 
                 <div class="mb-2 form-group col-12">
                   <label for="email" class="col-form-label">Contraseña</label>
 
                   <input
+                  [(ngModel)]="crear_usuario.contrasena" formControlName="contrasena"
                     type="password"
                     class="form-control"
                     autofocus
                     id="contrasena"
                   />
-                  <!-- <span class="text-danger">Este campo es requerido</span> -->
+                  <span class="text-danger">Este campo es requerido</span>
                 </div>
 
-                <!-- <div class="mb-2 form-group col-12">
+                <div class="mb-2 form-group col-12">
                         <label for="email" class="col-form-label ">Confirmar contraseña</label>
                         
                         <input 
+                        [(ngModel)]="crear_usuario.confirmPassword" formControlName="confirmPassword"
                         type="password"
                         class="form-control"
                   
@@ -142,17 +150,18 @@
                         <span class="text-danger" 
                         >Este campo es requerido <br
                         /></span>
+                        <span class="text-danger" *ngIf="validField('confirmPassword')"
+                        >Las Contraseñas no son iguales</span>
                         <span class="text-danger" *ngIf="validPassword()"
-                        >Las Contraseñas no son iguales</span
-                >
-                    </div> -->
+                        >Las Contraseñas no son iguales</span>
+                    </div>
               </div>
 
               <!-- Submit button -->
               <div
                 class="d-flex justify-content-around align-items-center mb-3 row p-2"
               >
-                <button class="btn btn-info">Registrarme</button>
+                <button class="btn btn-info" (click)="register()">Registrarme</button>
               </div>
             </form>
             <div class="d-flex justify-content-around align-items-center mb-4">

@@ -12,9 +12,7 @@ export class RegistrarseService {
   constructor(private http: HttpClient) { }
 
   // Aquí se llaman las apis del back
-
-  registrarUsuario(user: any){
-    return this.http.post(`${this.API_URL}/registrarse`, user)
+  createUsuario(body:any){ // Se le pasa un objeto que toma como body en postman para crear el registro
+    return this.http.post(`${this.API_URL}/registrarse`,body)
   }
-
 }

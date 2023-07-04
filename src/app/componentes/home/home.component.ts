@@ -24,8 +24,8 @@ export class HomeComponent {
   notas: any = [];
   celulas: any = [];
   celulaXdefecto: any = 1; // Valor por defecto para el select de estado de la nota
-  estadoNota: any = [];
   estadoXdefecto: any = 1; //Valor por defecto para el select de estado de la nota
+  estadoNota: any = [];
   busqueda: any = ([] = []);
   _filterRows: any = [];
   heart: any = false;
@@ -59,7 +59,7 @@ export class HomeComponent {
     // validators del form de crear
     titulo: [
       '',
-      [Validators.required, Validators.minLength(3), Validators.maxLength(70)],
+      [Validators.required, Validators.minLength(3), Validators.maxLength(50)],
     ],
     id_celula: ['', [Validators.required]],
     estado_nota: ['', [Validators.required]],

@@ -46,11 +46,11 @@ export class AdminTipoDocumentoComponent {
     // validators del form de crear
     tipo_documento: [
       '',
-      [Validators.required, Validators.minLength(2), Validators.maxLength(50)],
+      [Validators.required, Validators.minLength(2), Validators.maxLength(5)],
     ],
     nombre_tipo_documento: [
       '',
-      [Validators.required, Validators.minLength(2), Validators.maxLength(5)],
+      [Validators.required, Validators.minLength(2), Validators.maxLength(50)],
     ]
   });
 
