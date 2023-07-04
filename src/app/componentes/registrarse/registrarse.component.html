@@ -161,7 +161,7 @@
               <div
                 class="d-flex justify-content-around align-items-center mb-3 row p-2"
               >
-                <button class="btn btn-info" (click)="register()">Registrarme</button>
+                <button class="btn btn-info" [disabled]="!registerForm.valid" (click)="register()">Registrarme</button>
               </div>
             </form>
             <div class="d-flex justify-content-around align-items-center mb-4">
