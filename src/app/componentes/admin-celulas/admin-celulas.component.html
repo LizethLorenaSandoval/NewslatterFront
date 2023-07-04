@@ -101,7 +101,7 @@
     </form>
 	</div>
 	<div class="modal-footer">
-		<button type="button" class="btn btn-outline-dark" (click)="createCelula()">Crear célula</button>
+		<button type="button" class="btn btn-outline-dark" [disabled]="!celulaForm.valid" (click)="createCelula()">Crear célula</button>
 	</div>
 </ng-template>
     
