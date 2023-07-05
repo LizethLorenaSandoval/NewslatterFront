@@ -73,7 +73,7 @@
                     {{ notas.nombre_celula | lowercase }} ,
                     {{ notas.hora_fecha | date : "medium" }}
                   </p>
-                  <div class="mt-1 ms-3" *ngIf="notas.id_nota != 1">
+                  <div class="mt-1 ms-3" *ngIf="notas.estado_nota ==1">
                     <i
                       class="fa-solid fa-flag fa-xl"
                       style="color: #ff0000"
@@ -246,6 +246,7 @@
         <button
           type="button"
           class="btn btn-outline-dark"
+          [disabled]="!notaForm.valid"
           (click)="createNota()"
         >
           Crear letter

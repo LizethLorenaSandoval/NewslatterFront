@@ -11,6 +11,7 @@ import {
 } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { Subject } from 'rxjs';
+import { sortRows } from '@swimlane/ngx-datatable';
 
 @Component({
   selector: 'app-registrarse',
@@ -58,7 +59,7 @@ export class RegistrarseComponent {
       id_tipo_documento: ["",[Validators.required]],
       correo: [
         '',
-        [Validators.required, Validators.minLength(5), Validators.maxLength(15)],
+        [Validators.required, Validators.minLength(5), Validators.maxLength(50)],
       ],
       contrasena: [
         '',
@@ -118,28 +119,42 @@ export class RegistrarseComponent {
     console.log("Objeto ->", this.crear_usuario)
 
     try{
-      this.RegistrarseService.createUsuario(this.crear_usuario).subscribe((res:any)=> {
-        if (this.crear_usuario) {
-          Swal.fire({
-            position: 'top-end',
-            icon: 'success',
-            title: 'Registro exitoso',
-            text: 'Te haz registrado correctamente',
-            showConfirmButton: false,
-            timer: 1000,
-          });
-            this.registerForm.reset();
-        } else {
-          Swal.fire({
-            position: 'center',
-            icon: 'error',
-            title: 'Opps, ocurrio un error al registrarte',
-            showConfirmButton: true,
-            confirmButtonText: 'Ok',
-          });
-            this.registerForm.reset();
-        }
-      })
+      
+        this.RegistrarseService.createUsuario(this.crear_usuario).subscribe((res:any)=> {
+          if (this.crear_usuario) {
+            console.log(res);
+            var status = res.status;
+
+            if(!res.status){
+              Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'Registro exitoso',
+                text: 'Te haz registrado correctamente',
+                showConfirmButton: false,
+                timer: 1000,
+              });
+                this.registerForm.reset();
+            }else if (res.status){
+              Swal.fire({
+                position: 'center',
+                icon: 'error',
+                title: status,
+                showConfirmButton: true,
+                confirmButtonText: 'Ok',
+              });
+            } else {
+              Swal.fire({
+                position: 'center',
+                icon: 'error',
+                title: 'Opps, ocurrio un error al registrarte',
+                showConfirmButton: true,
+                confirmButtonText: 'Ok',
+              });
+                this.registerForm.reset();
+            }
+            } 
+        })      
 
     }catch(error){
       console.log(error);

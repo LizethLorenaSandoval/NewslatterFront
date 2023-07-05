@@ -23,12 +23,12 @@ export class HomeComponent {
   crear_nota: any = [];
   notas: any = [];
   celulas: any = [];
-  celulaXdefecto: any = 1; // Valor por defecto para el select de estado de la nota
-  estadoXdefecto: any = 1; //Valor por defecto para el select de estado de la nota
   estadoNota: any = [];
   busqueda: any = ([] = []);
   _filterRows: any = [];
   heart: any = false;
+  celulaXdefecto:any = 1; //Valor por defecto para el select usado en en [(ngModel)]
+  estadoXdefecto:any = 0; //Valor por defecto para el select usado en en [(ngModel)]
 
   ngOnInit() {
     this.getEstadoNota();
@@ -59,19 +59,18 @@ export class HomeComponent {
     // validators del form de crear
     titulo: [
       '',
-      [Validators.required, Validators.minLength(3), Validators.maxLength(50)],
+      [Validators.required, Validators.minLength(3), Validators.maxLength(20)],
     ],
-    id_celula: ['', [Validators.required]],
-    estado_nota: ['', [Validators.required]],
-    id_usuario: ['', [Validators.required]],
+    id_celula: ["", [Validators.required]],
+    estado_nota: ["", [Validators.required]],
     descripcion: [
       '',
       [
         Validators.required,
         Validators.minLength(3),
-        Validators.maxLength(1000),
+        Validators.maxLength(999),
       ],
-    ],
+    ]
   });
 
   validField(field: string) {
@@ -80,62 +79,6 @@ export class HomeComponent {
       this.notaForm.controls[field].errors &&
       this.notaForm.controls[field].touched
     );
-  }
-
-  // Servicios de notas
-  getNotas() {
-    this.notasService.getNotas().subscribe((res) => {
-      this.notas = res;
-      console.log(this.notas);
-
-      this._filterRows = res;
-    });
-  }
-
-  createNota() {
-    this.crear_nota = {
-      titulo: this.notaForm.value.titulo,
-      id_celula: this.notaForm.value.id_celula,
-      estado_nota: this.notaForm.value.estado_nota,
-      id_usuario: 6,
-      descripcion: this.notaForm.value.descripcion,
-    };
-
-    console.log('Objeto ->', this.crear_nota);
-	
-    try {
-      this.notasService.createNota(this.crear_nota).subscribe(
-        (res: any) => {
-          // console.log('res ->', res);
-
-          if (this.crear_nota) {
-            Swal.fire({
-              position: 'top-end',
-              icon: 'success',
-              title: 'Nota creada',
-              text: 'Se ha creado la nota',
-              showConfirmButton: false,
-              timer: 1000,
-            });
-              this.getNotas();
-              this.modalService.dismissAll();
-              this.notaForm.reset();
-          } else {
-            Swal.fire({
-              position: 'center',
-              icon: 'error',
-              title: 'Opps, ocurrio un error al crear la nota',
-              showConfirmButton: true,
-              confirmButtonText: 'Ok',
-            });
-              this.notaForm.reset();
-          }
-        },
-        (err) => console.log(err)
-      );
-    } catch (error) {
-      console.log(error);
-    }
   }
 
   // Servicios de celulas
@@ -157,11 +100,68 @@ export class HomeComponent {
   }
 
   // Servicios de estado notas
-  getEstadoNota() {
+  async getEstadoNota() {
     this.EstadoNotaService.getEstadoNota().subscribe((res) => {
       this.estadoNota = res;
       console.log(this.estadoNota);
     });
+  }
+
+  // Servicios de notas
+  getNotas() {
+    this.notasService.getNotas().subscribe((res) => {
+      this.notas = res;
+      console.log(this.notas);
+
+      this._filterRows = res;
+    });
+  }
+
+  createNota() {
+    this.crear_nota = {
+      titulo: this.notaForm.value.titulo,
+      id_celula: this.notaForm.value.id_celula,
+      estado_nota: this.notaForm.value.estado_nota,
+      id_usuario: 6,
+      descripcion: this.notaForm.value.descripcion
+    };
+
+    console.log('Objeto ->', this.crear_nota);
+	
+    try {
+      this.notasService.createNota(this.crear_nota).subscribe(
+        (res: any) => {
+          // console.log('res ->', res);
+
+          if (this.crear_nota) {
+            Swal.fire({
+              position: 'top-end',
+              icon: 'success',
+              title: 'Nota creada',
+              text: 'Se ha creado la nota',
+              showConfirmButton: false,
+              timer: 1000,
+            });
+              window.location.reload();
+              this.notaForm.reset();
+              this.modalService.dismissAll();
+              this.getNotas();
+          } else {
+            Swal.fire({
+              position: 'center',
+              icon: 'error',
+              title: 'Opps, ocurrio un error al crear la nota',
+              showConfirmButton: true,
+              confirmButtonText: 'Ok',
+            });
+              this.notaForm.reset();
+          }
+        },
+        (err) => console.log(err)
+      );
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   // Get y Set del buscador

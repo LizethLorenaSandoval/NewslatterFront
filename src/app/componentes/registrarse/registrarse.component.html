@@ -37,7 +37,7 @@
                     id="nombre"
                     placeholder="Pepito"
                   />
-                  <span class="text-danger">Este campo es requerido</span>
+                  <span class="text-danger" *ngIf="validField('nombre')">Este campo es requerido</span>
                 </div>
 
                 <div class="mb-3 form-group col-6">
@@ -51,7 +51,7 @@
                     id="apellido"
                     placeholder="Perez"
                   />
-                  <span class="text-danger">Este campo es requerido</span>
+                  <span class="text-danger" *ngIf="validField('apellido')">Este campo es requerido</span>
                 </div>
 
                 <div class="mb-3 form-group col-12" autofocus>
@@ -70,7 +70,7 @@
                       {{ celulas.nombre_celula | titlecase }}
                     </option>
                   </select>
-                  <span class="text-danger">Este campo es requerido</span>
+                  <span class="text-danger" *ngIf="validField('id_celula')">Este campo es requerido</span>
                 </div>
 
                 <div class="mb-3 form-group col-12" autofocus>
@@ -92,7 +92,7 @@
                       {{ tipo_documento.nombre_tipo_documento }}
                     </option>
                   </select>
-                  <span class="text-danger">Este campo es requerido</span>
+                  <span class="text-danger" *ngIf="validField('id_tipo_documento')">Este campo es requerido</span>
                 </div>
 
                 <div class="mb-3 form-group col-6">
@@ -107,7 +107,7 @@
                     autofocus
                     id="documento"
                   />
-                  <span class="text-danger">Este campo es requerido</span>
+                  <span class="text-danger" *ngIf="validField('documento')">Este campo es requerido</span>
                 </div>
 
                 <div class="mb-3 form-group col-6">
@@ -121,7 +121,7 @@
                     id="correo"
                     placeholder="Pepito@Perez.com"
                   />
-                  <span class="text-danger">Este campo es requerido</span>
+                  <span class="text-danger" *ngIf="validField('correo')">Este campo es requerido</span>
                 </div>
 
                 <div class="mb-2 form-group col-12">
@@ -134,7 +134,7 @@
                     autofocus
                     id="contrasena"
                   />
-                  <span class="text-danger">Este campo es requerido</span>
+                  <span class="text-danger" *ngIf="validField('contrasena')">Este campo es requerido</span>
                 </div>
 
                 <div class="mb-2 form-group col-12">
@@ -147,11 +147,6 @@
                   
                         autofocus
                         id="confirmPassword"/>
-                        <span class="text-danger" 
-                        >Este campo es requerido <br
-                        /></span>
-                        <span class="text-danger" *ngIf="validField('confirmPassword')"
-                        >Las Contraseñas no son iguales</span>
                         <span class="text-danger" *ngIf="validPassword()"
                         >Las Contraseñas no son iguales</span>
                     </div>
