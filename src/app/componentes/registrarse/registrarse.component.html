@@ -30,7 +30,7 @@
                   <label for="email" class="col-form-label">Nombre</label>
 
                   <input
-                  [(ngModel)]="crear_usuario.nombre" formControlName="nombre"
+                    [(ngModel)]="crear_usuario.nombre" formControlName="nombre"
                     type="text"
                     class="form-control"
                     autofocus
@@ -44,7 +44,7 @@
                   <label for="email" class="col-form-label">Apellido</label>
 
                   <input
-                  [(ngModel)]="crear_usuario.apellido" formControlName="apellido"
+                    [(ngModel)]="crear_usuario.apellido" formControlName="apellido"
                     type="text"
                     class="form-control"
                     autofocus
@@ -59,7 +59,7 @@
                     >Celula</label
                   >
                   <select
-                  [(ngModel)]="celulaXdefecto" formControlName="id_celula"
+                    [(ngModel)]="celulaXdefecto" formControlName="id_celula"
                     class="form-select"
                     aria-label="Default select example"
                   >
@@ -81,7 +81,7 @@
                     >Tipo de documento</label
                   >
                   <select
-                  [(ngModel)]="tipoDocXdefecto" formControlName="id_tipo_documento"
+                    [(ngModel)]="tipoDocXdefecto" formControlName="id_tipo_documento"
                     class="form-select"
                     aria-label="Default select example"
                   >
@@ -101,7 +101,7 @@
                   >
 
                   <input
-                  [(ngModel)]="crear_usuario.documento" formControlName="documento"
+                    [(ngModel)]="crear_usuario.documento" formControlName="documento"
                     type="number"
                     class="form-control"
                     autofocus
@@ -114,7 +114,7 @@
                   <label for="email" class="col-form-label">Email</label>
 
                   <input
-                  [(ngModel)]="crear_usuario.correo" formControlName="correo"
+                    [(ngModel)]="crear_usuario.correo" formControlName="correo"
                     type="email"
                     class="form-control"
                     autofocus
@@ -128,7 +128,8 @@
                   <label for="email" class="col-form-label">Contraseña</label>
 
                   <input
-                  [(ngModel)]="crear_usuario.contrasena" formControlName="contrasena"
+                    [(ngModel)]="crear_usuario.contrasena" formControlName="contrasena"
+                    placeholder="minimo 5 digitos"
                     type="password"
                     class="form-control"
                     autofocus

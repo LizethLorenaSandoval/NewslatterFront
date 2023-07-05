@@ -123,9 +123,8 @@ export class RegistrarseComponent {
         this.RegistrarseService.createUsuario(this.crear_usuario).subscribe((res:any)=> {
           if (this.crear_usuario) {
             console.log(res);
-            var status = res.status;
 
-            if(!res.status){
+            if(res.statusCode==200){
               Swal.fire({
                 position: 'top-end',
                 icon: 'success',
@@ -135,23 +134,14 @@ export class RegistrarseComponent {
                 timer: 1000,
               });
                 this.registerForm.reset();
-            }else if (res.status){
+            }else if (res.statusCode!=200){
               Swal.fire({
                 position: 'center',
                 icon: 'error',
-                title: status,
+                title: res.status,
                 showConfirmButton: true,
                 confirmButtonText: 'Ok',
               });
-            } else {
-              Swal.fire({
-                position: 'center',
-                icon: 'error',
-                title: 'Opps, ocurrio un error al registrarte',
-                showConfirmButton: true,
-                confirmButtonText: 'Ok',
-              });
-                this.registerForm.reset();
             }
             } 
         })      
