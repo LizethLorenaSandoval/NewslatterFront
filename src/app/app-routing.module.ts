@@ -15,29 +15,31 @@ import { AdminUsuariosComponent } from './componentes/admin-usuarios/admin-usuar
 import { AdminRolComponent } from './componentes/admin-rol/admin-rol.component';
 import { AdminCelulasComponent } from './componentes/admin-celulas/admin-celulas.component';
 import { AdminTipoDocumentoComponent } from './componentes/admin-tipo-documento/admin-tipo-documento.component';
+import { AuthguardGuard } from './guard/authguard.guard';
 
 const routes: Routes = [
   {path: '', redirectTo: 'login', pathMatch: 'full'},
+  {path: 'home', component: HomeComponent, canActivate:[AuthguardGuard]},
   {path: 'login', component: LoginComponent},
-  {path: 'index', component: LoginComponent},
+  {path: 'index', component: LoginComponent, canActivate:[AuthguardGuard]},
   {path: 'registrarse', component: RegistrarseComponent},
   {path: 'recuperarcontrasena', component: RecuperarcontrasenaComponent},
   {path: 'recuperartoken', component: RecuperartokenComponent},
-  {path: 'nav', component: NavComponent},
-  {path: 'home', component: HomeComponent},
+  {path: 'nav', component: NavComponent, canActivate:[AuthguardGuard]},
   {path: 'not-found', component: NotFoundComponent},
-  {path: 'perfil', component: PerfilComponent},
-  {path: 'nav-admin-index', component: NavAdminIndexComponent},
-  {path: 'admin-usuarios', component: AdminUsuariosComponent },
-  {path: 'admin-rol', component: AdminRolComponent},
-  {path: 'admin-celulas', component: AdminCelulasComponent},
-  {path: 'admin-tipo_documento', component: AdminTipoDocumentoComponent},
+  {path: 'perfil', component: PerfilComponent, canActivate:[AuthguardGuard]},
+  {path: 'nav-admin-index', component: NavAdminIndexComponent, canActivate:[AuthguardGuard]},
+  {path: 'admin-usuarios', component: AdminUsuariosComponent, canActivate:[AuthguardGuard]},
+  {path: 'admin-rol', component: AdminRolComponent, canActivate:[AuthguardGuard]},
+  {path: 'admin-celulas', component: AdminCelulasComponent, canActivate:[AuthguardGuard]},
+  {path: 'admin-tipo_documento', component: AdminTipoDocumentoComponent, canActivate:[AuthguardGuard]},
   {path: '**', redirectTo: 'not-found'},
   
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [AuthguardGuard]
 })
 export class AppRoutingModule { }

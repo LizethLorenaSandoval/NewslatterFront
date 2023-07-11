@@ -23,6 +23,7 @@ export class LoginComponent {
     private LoginService: LoginService,
     private router: Router,
     private fb: UntypedFormBuilder // esto se importa
+    
     ) {}
 
   public loginForm: UntypedFormGroup = this.fb.group({
@@ -35,6 +36,18 @@ export class LoginComponent {
       [Validators.required, Validators.minLength(5), Validators.maxLength(30)],
     ],
   })
+
+  ngOnInit(){
+    this.obtenerLocalStorage();
+  }
+
+  obtenerLocalStorage(){
+    let token = localStorage.getItem("token");
+    let id_usuario = localStorage.getItem("id_usuario");
+
+    console.log("id_usuario:" +id_usuario);
+    console.log("token: "+token);
+  }
 
 
   loginUser(){ // función de iniciar sesión para el botón de ingresar como usuario
@@ -65,7 +78,9 @@ export class LoginComponent {
               showConfirmButton: false,
               timer: 1500
             })
-            // localStorage.setItem('id_usuario', res.id_usuario);
+            localStorage.setItem("token", res);
+            localStorage.setItem("id_usuario", res.id_usuario);
+
             this.router.navigate(["/home"]).then(() => window.location.reload());
           }else if (res.statusCode === 403){
             Swal.fire({
