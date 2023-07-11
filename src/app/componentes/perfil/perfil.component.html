@@ -22,9 +22,9 @@
                 <div class="row ">
                     <div class="mb-3 form-group col-4">
                         <label for="email" class="col-form-label">Nombre</label>
-                        
                         <input 
-                        value="Pepito"
+                        *ngFor="let misDatos of misDatos"
+                        value="{{misDatos.nombre}}"
                         type="text"
                         class="form-control"
                         id="exampleFormControlInput1"/>
@@ -33,9 +33,9 @@
     
                     <div class="mb-3 form-group col-4">
                         <label for="email" class="col-form-label ">Apellido</label>
-                        
                         <input 
-                        value="Perez"
+                        *ngFor="let misDatos of misDatos"
+                        value="{{misDatos.apellido}}"
                         type="text"
                         class="form-control"
                         id="exampleFormControlInput2"/>
@@ -43,9 +43,9 @@
 
                     <div class="mb-3 form-group col-4">
                         <label for="text" class="col-form-label ">Rol</label>
-                        
                         <input disabled
-                        value="Admin"
+                        *ngFor="let misDatos of misDatos"
+                        value="{{misDatos.nombre_rol}}"
                         type="text"
                         class="form-control"
                         id="exampleFormControlInput3"/>
@@ -55,22 +55,22 @@
                     <div class="mb-3 form-group col-12">
                         <label for="email" class="col-form-label ">Celula</label>
                         <select class="form-select" aria-label="Default select example">
-                            <option *ngFor="let celulas of celulas" value="{{celulas.id_celula}}">{{celulas.nombre_celula | titlecase}}</option>
+                            <option *ngFor="let misDatos of misDatos" value="{{misDatos.nombre_celula}}">{{misDatos.nombre_celula | titlecase}}</option>
                         </select>
                     </div>
 
                     <div class="mb-3 form-group col-12">
                         <label for="email" class="col-form-label ">Tipo de documento</label>
                         <select class="form-select" aria-label="Default select example">
-                            <option *ngFor="let tipo_documento of tipo_documento" value="{{tipo_documento.id_tipo_documento}}">{{tipo_documento.nombre_tipo_documento}}</option>
+                            <option *ngFor="let misDatos of misDatos" value="{{misDatos.nombre_tipo_documento}}">{{misDatos.nombre_tipo_documento}}</option>
                         </select>
                     </div>
 
                     <div class="mb-3 form-group col-6">
                         <label for="email" class="col-form-label ">Número de cedula</label>
-                        
                         <input disabled
-                        value="1234567"
+                        *ngFor="let misDatos of misDatos"
+                        value="{{misDatos.documento}}"
                         type="number"
                         class="form-control"
                         id="exampleFormControlInput4"/>
@@ -81,7 +81,8 @@
                         <label for="email" class="col-form-label ">Email</label>
                         
                         <input disabled
-                        value="pepito@perez.com"
+                        *ngFor="let misDatos of misDatos"
+                        value="{{misDatos.correo}}"
                         type="email"
                         class="form-control"
                         id="exampleFormControlInput5"/>

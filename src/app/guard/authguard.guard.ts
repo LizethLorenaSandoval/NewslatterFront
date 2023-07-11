@@ -24,13 +24,6 @@ export class AuthguardGuard implements CanActivate {
       this.router.navigate(['/login']);
       return false;
     } else {
-      Swal.fire({
-        position: 'top-end',
-        icon: 'success',
-        title: 'Login exitoso',
-        showConfirmButton: false,
-        timer: 1500
-      })
       return true;
     }
   }

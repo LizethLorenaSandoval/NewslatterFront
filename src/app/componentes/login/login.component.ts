@@ -78,7 +78,7 @@ export class LoginComponent {
               showConfirmButton: false,
               timer: 1500
             })
-            localStorage.setItem("token", res);
+            localStorage.setItem("token", res.token);
             localStorage.setItem("id_usuario", res.id_usuario);
 
             this.router.navigate(["/home"]).then(() => window.location.reload());
@@ -87,6 +87,14 @@ export class LoginComponent {
               position: "center",
               icon: "error",
               title: "Opps, las credenciales son incorrectas",
+              showConfirmButton: true,
+              confirmButtonText: "Ok",
+            });
+          }else if (res.statusCode === 203){
+            Swal.fire({
+              position: "center",
+              icon: "error",
+              title: "Opps, no exiten usuarios con los datos ingresados",
               showConfirmButton: true,
               confirmButtonText: "Ok",
             });
