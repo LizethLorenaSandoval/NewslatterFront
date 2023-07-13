@@ -17,12 +17,13 @@
                     <h2>Mi perfil</h2><i class="fa-solid fa-id-card-clip fa-2xl"></i>
                 </div>
                 
-              <form action class="example-form">
+              <form [formGroup]="editUForm" action class="example-form">
                 
                 <div class="row ">
                     <div class="mb-3 form-group col-4">
                         <label for="email" class="col-form-label">Nombre</label>
                         <input 
+                        [(ngModel)]="misDatos.nombre" formControlName="nombre"
                         *ngFor="let misDatos of misDatos"
                         value="{{misDatos.nombre}}"
                         type="text"
@@ -34,6 +35,7 @@
                     <div class="mb-3 form-group col-4">
                         <label for="email" class="col-form-label ">Apellido</label>
                         <input 
+                        [(ngModel)]="misDatos.apellido" formControlName="apellido"
                         *ngFor="let misDatos of misDatos"
                         value="{{misDatos.apellido}}"
                         type="text"
@@ -54,15 +56,19 @@
 
                     <div class="mb-3 form-group col-12">
                         <label for="email" class="col-form-label ">Celula</label>
-                        <select class="form-select" aria-label="Default select example">
-                            <option *ngFor="let misDatos of misDatos" value="{{misDatos.nombre_celula}}">{{misDatos.nombre_celula | titlecase}}</option>
+                        <select 
+                        [(ngModel)]="id_celula" formControlName="id_celula"
+                        class="form-select" aria-label="Default select example">
+                            <option *ngFor="let misDatos of celulas" [selected]="misDatos.id_celula" value="{{misDatos.id_celula}}">{{misDatos.nombre_celula | titlecase}}</option>
                         </select>
                     </div>
 
                     <div class="mb-3 form-group col-12">
                         <label for="email" class="col-form-label ">Tipo de documento</label>
-                        <select class="form-select" aria-label="Default select example">
-                            <option *ngFor="let misDatos of misDatos" value="{{misDatos.nombre_tipo_documento}}">{{misDatos.nombre_tipo_documento}}</option>
+                        <select 
+                        [(ngModel)]="id_tipo_documento" formControlName="id_tipo_documento"
+                         class="form-select" aria-label="Default select example">
+                         <option *ngFor="let misDatos of tipo_documento" [selected]="misDatos.id_tipo_documento" value="{{misDatos.id_tipo_documento}}">{{misDatos.nombre_tipo_documento | titlecase}}</option>
                         </select>
                     </div>
 
@@ -91,7 +97,7 @@
       
                 <!-- Submit button -->
                 <div class="d-flex justify-content-around align-items-center row p-2 d-grid gap-3">
-                <button type="submit" class="btn btn-info">Editar</button>
+                <button (click)="editPerfil()" type="submit" class="btn btn-info">Editar</button>
                 
                 </div>
 

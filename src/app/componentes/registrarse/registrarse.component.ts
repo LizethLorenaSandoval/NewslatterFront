@@ -21,12 +21,12 @@ import { sortRows } from '@swimlane/ngx-datatable';
 })
 export class RegistrarseComponent {
   // Variables
-  crear_usuario: any = [];
+  crear_usuario: any = []; //Variable que almacena datos del formulario de creación de usuario
   tipoDocXdefecto: any = 1; //Valor por defecto para el select de estado de la nota
   celulaXdefecto: any = 1; // Valor por defecto para el select de estado de la nota
-	celulas: any = [];
-  tipo_documento: any = [];
-  user: any = [];
+	celulas: any = []; //Almacena los datos de la tabla celula
+  tipo_documento: any = []; //Almacena los datos de la tabla tipo_documento
+  // user: any = [];
 
   ngOnInit():void{
     this.getTipoDoc();
@@ -116,7 +116,7 @@ export class RegistrarseComponent {
       correo: this.registerForm.value.correo,
       contrasena: this.registerForm.value.contrasena
     }
-    console.log("Objeto ->", this.crear_usuario)
+    // console.log("Objeto ->", this.crear_usuario)
 
     try{
       
