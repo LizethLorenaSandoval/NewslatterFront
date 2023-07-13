@@ -94,6 +94,35 @@ export class PerfilComponent {
     };
 
     console.log('Objeto ->', this.editUser);
+
+    try{
+      this.MiperfilService.editPerfil(this.id_usuario,this.editUser).subscribe((res:any)=>{
+        console.log(res);
+
+        if(res.statusCode==200){
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Actualización exitosa',
+            text: 'Has actualizado tus datos correctamente',
+            showConfirmButton: false,
+            timer: 1000,
+          });
+        }else if (res.statusCode!=200){
+          Swal.fire({
+            position: 'center',
+            icon: 'error',
+            title: 'Opps, ha ocurrido un error',
+            showConfirmButton: true,
+            confirmButtonText: 'Ok',
+          });
+        }
+      })
+
+    }catch(error){
+      console.log(error);
+      
+    }
   }
 
   // Servicios de celulas
