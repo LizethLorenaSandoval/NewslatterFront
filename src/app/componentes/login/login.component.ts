@@ -116,4 +116,82 @@ export class LoginComponent {
     
   }
 
+
+  loginAdmin(){ // función de iniciar sesión para el botón de ingresar como administrador
+
+    this.login = {
+      correo: this.loginForm.value.correo,
+      contrasena: this.loginForm.value.contrasena
+    }
+
+    try{
+      this.LoginService.login(this.login).subscribe((res:any)=>{
+        console.log("Objeto ->", res);
+        if(res.id_estado_usuario === 0){
+          Swal.fire({
+            position: "center",
+            icon: "error",
+            title: "Opps, tu usuario esta desactivado, por favor comunicate con el administrador",
+            showConfirmButton: true,
+            confirmButtonText: "Ok",
+          });
+        } else if (res.id_estado_usuario !==0){
+          if (res.id_rol !== 1){
+            Swal.fire({
+              position: "center",
+              icon: "error",
+              title: "Opps, esta opción es solo para el administrador",
+              showConfirmButton: true,
+              confirmButtonText: "Ok",
+            });
+          }else {
+            if (res.statusCode === 200){
+              console.log("Login exitoso")
+              Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'Login exitoso',
+                showConfirmButton: false,
+                timer: 1500
+              })
+              localStorage.setItem("token", res.token);
+              localStorage.setItem("id_usuario", res.id_usuario);
+  
+              this.router.navigate(["/nav-admin-index"]).then(() => window.location.reload());
+            }else if (res.statusCode === 403){
+              Swal.fire({
+                position: "center",
+                icon: "error",
+                title: "Opps, las credenciales son incorrectas",
+                showConfirmButton: true,
+                confirmButtonText: "Ok",
+              });
+            }else if (res.statusCode === 203){
+              Swal.fire({
+                position: "center",
+                icon: "error",
+                title: "Opps, no exiten usuarios con los datos ingresados",
+                showConfirmButton: true,
+                confirmButtonText: "Ok",
+              });
+            }      
+            else {
+              Swal.fire({
+                position: "center",
+                icon: "error",
+                title: "Opps, ocurrio un error inesperado",
+                showConfirmButton: true,
+                confirmButtonText: "Ok",
+              });
+            }
+          }
+        }
+      })
+
+    }catch (error){
+      console.log(error)
+    }
+    
+  }
+
 }
