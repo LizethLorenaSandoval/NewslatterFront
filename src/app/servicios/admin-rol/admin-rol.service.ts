@@ -21,11 +21,7 @@ export class AdminRolService {
     return this.http.post(`${this.API_URL}/crear_rol`,body)
   }
 
-  getDataById(id_rol:any){ // Trae los roles por el id para usar en ts del delete
-    return this.http.get(`${this.API_URL}/rolid/${id_rol}`);
-  }
-
   deleteRol(id_rol:any){ // Se le pasa el id del rol a eliminar
-    return this.http.delete(`${this.API_URL}/eliminarrol/${id_rol}`)
+    return this.http.delete(`${this.API_URL}/eliminarol/${id_rol}`)
   }
 }

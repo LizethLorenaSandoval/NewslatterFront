@@ -21,7 +21,6 @@ export class AdminRolComponent {
   rol: any = [];
   busqueda: any = ([] = []);
   _filterRows: any = [];
-  id_rol:any = {}; // esto se llena en getDataById() para ser llamado en deleteRol()
 
   ngOnInit() {
     this.getrolesAdmin();
@@ -68,12 +67,6 @@ export class AdminRolComponent {
     });
   }
 
-  getDataById(id_rol:any) {
-    this.AdminRolServices.getDataById(id_rol).subscribe((res: any) => {
-      this.id_rol = res[0];
-    });
-  }
-
   createRol() {
     this.crear_rol = {
       nombre_rol: this.rolForm.value.nombre_rol,
@@ -116,7 +109,7 @@ export class AdminRolComponent {
   }
 
   deleteRol(id_rol:any){
-    
+    console.log(id_rol);
     Swal.fire({
       title: "¿Estas seguro?",
       text: "No podras revertir esto!",
@@ -131,9 +124,8 @@ export class AdminRolComponent {
       if (result.value) {
 
         try{
-          this.AdminRolServices.deleteRol(this.id_rol).subscribe((res:any)=>{
-            this.id_rol = res.id_rol;
-            console.log(this.id_rol);
+          this.AdminRolServices.deleteRol(id_rol).subscribe((res:any)=>{
+            console.log(id_rol);
             Swal.fire({
               position: "top-end",
               icon: "success",

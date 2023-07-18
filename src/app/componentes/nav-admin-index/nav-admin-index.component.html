@@ -16,7 +16,7 @@
         >
 
         <div class="m-3 form-group">
-          <a [routerLink]="['/login']"
+          <a (click)="logOut()" [routerLink]="['/login']"
             ><i class="fa-solid fa-right-from-bracket icon"></i
           ></a>
         </div>
